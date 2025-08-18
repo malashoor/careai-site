@@ -4,12 +4,3 @@
 
 [build.environment]
   NODE_VERSION = "18"
-
-# Disable automatic Next.js plugin to avoid conflicts
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  enabled = false
-
-# Ensure clean builds
-[build.processing]
-  skip_processing = false
