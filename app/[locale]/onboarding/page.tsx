@@ -236,10 +236,10 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
   const renderRoleSelection = () => (
     <div className="max-w-4xl mx-auto text-center" ref={stepRef} tabIndex={-1}>
       <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-        {i.cta.onboarding.title}
+        {i.onboarding.title}
       </h1>
       <p className="text-xl text-slate-600 mb-12">
-        {i.cta.onboarding.subtitle}
+        {i.onboarding.subtitle}
       </p>
       
       <div className="grid md:grid-cols-3 gap-8">
@@ -249,11 +249,11 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             ref={(el) => { roleRefs.current[role] = el; }}
             onClick={() => handleRoleSelect(role)}
             className="card p-8 text-center hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-500 focus:ring-opacity-50"
-            aria-label={`Select ${i.cta.onboarding.roles[role].title}`}
+            aria-label={`Select ${i.onboarding.roles[role].title}`}
           >
-            <div className="text-6xl mb-4">{i.cta.onboarding.roles[role].icon}</div>
-            <h3 className="text-2xl font-bold mb-3">{i.cta.onboarding.roles[role].title}</h3>
-            <p className="text-slate-600">{i.cta.onboarding.roles[role].subtitle}</p>
+            <div className="text-6xl mb-4">{i.onboarding.roles[role].icon}</div>
+            <h3 className="text-2xl font-bold mb-3">{i.onboarding.roles[role].title}</h3>
+            <p className="text-slate-600">{i.onboarding.roles[role].subtitle}</p>
           </button>
         ))}
       </div>
@@ -263,7 +263,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
   const renderDetailsForm = () => (
     <div className="max-w-2xl mx-auto">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-2">{i.cta.onboarding.steps.details}</h1>
+        <h1 className="text-3xl font-bold mb-2">{i.onboarding.steps.details}</h1>
         <p className="text-slate-600">Tell us more about yourself</p>
       </div>
 
@@ -275,7 +275,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
         <div className="grid md:grid-cols-2 gap-4 mb-6">
           <div>
             <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-2">
-              {i.cta.onboarding.fields.basic.firstName} *
+              {i.onboarding.fields.basic.firstName} *
             </label>
             <input
               type="text"
@@ -290,7 +290,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           
           <div>
             <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-2">
-              {i.cta.onboarding.fields.basic.lastName} *
+              {i.onboarding.fields.basic.lastName} *
             </label>
             <input
               type="text"
@@ -306,7 +306,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
         
         <div className="mb-6">
           <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
-            {i.cta.onboarding.fields.basic.email} *
+                          {i.onboarding.fields.basic.email} *
           </label>
           <input
             type="email"
@@ -321,7 +321,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
         
         <div className="mb-6">
           <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
-            {i.cta.onboarding.fields.basic.phone}
+                          {i.onboarding.fields.basic.phone}
           </label>
           <input
             type="tel"
@@ -337,7 +337,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           <div className="space-y-4 mb-6">
             <div>
               <label htmlFor="age" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.senior.age} *
+                {i.onboarding.fields.senior.age} *
               </label>
               <input
                 type="number"
@@ -354,7 +354,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="livingSituation" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.senior.livingSituation} *
+                {i.onboarding.fields.senior.livingSituation} *
               </label>
               <select
                 id="livingSituation"
@@ -374,7 +374,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="primaryConcern" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.senior.primaryConcern} *
+                {i.onboarding.fields.senior.primaryConcern} *
               </label>
               <select
                 id="primaryConcern"
@@ -398,7 +398,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           <div className="space-y-4 mb-6">
             <div>
               <label htmlFor="relationship" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.family.relationship} *
+                {i.onboarding.fields.family.relationship} *
               </label>
               <select
                 id="relationship"
@@ -419,7 +419,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="seniorAge" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.family.seniorAge} *
+                {i.onboarding.fields.family.seniorAge} *
               </label>
               <input
                 type="number"
@@ -436,7 +436,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="careLevel" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.family.careLevel} *
+                {i.onboarding.fields.family.careLevel} *
               </label>
               <select
                 id="careLevel"
@@ -456,7 +456,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="primaryConcern" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.family.primaryConcern} *
+                {i.onboarding.fields.family.primaryConcern} *
               </label>
               <select
                 id="primaryConcern"
@@ -480,7 +480,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           <div className="space-y-4 mb-6">
             <div>
               <label htmlFor="organization" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.professional.organization} *
+                {i.onboarding.fields.professional.organization} *
               </label>
               <input
                 type="text"
@@ -495,7 +495,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="professionalRole" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.professional.role} *
+                {i.onboarding.fields.professional.role} *
               </label>
               <input
                 type="text"
@@ -510,7 +510,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="organizationType" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.professional.organizationType} *
+                {i.onboarding.fields.professional.organizationType} *
               </label>
               <select
                 id="organizationType"
@@ -531,7 +531,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
             
             <div>
               <label htmlFor="useCase" className="block text-sm font-medium text-slate-700 mb-2">
-                {i.cta.onboarding.fields.professional.useCase} *
+                {i.onboarding.fields.professional.useCase} *
               </label>
               <select
                 id="useCase"
@@ -581,7 +581,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
               aria-required="true"
             />
             <span className="text-sm text-slate-600">
-              {i.cta.onboarding.fields.consent}
+              {i.onboarding.fields.consent}
             </span>
           </label>
         </div>
@@ -600,7 +600,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           className="w-full py-4 bg-brand-600 text-white rounded-2xl font-semibold hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-brand-500 focus:ring-opacity-50"
           aria-live="polite"
         >
-          {isSubmitting ? i.cta.onboarding.fields.submitting : i.cta.onboarding.fields.submit}
+                        {isSubmitting ? i.onboarding.fields.submitting : i.onboarding.fields.submit}
         </button>
 
         {/* Back Button */}
@@ -619,13 +619,13 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
     <div className="max-w-2xl mx-auto text-center">
       <div className="card p-12">
         <div className="text-6xl mb-6">🎉</div>
-        <h1 className="text-3xl font-bold mb-4">{i.cta.onboarding.success.title}</h1>
-        <p className="text-xl text-slate-600 mb-8">{i.cta.onboarding.success.subtitle}</p>
+                    <h1 className="text-3xl font-bold mb-4">{i.onboarding.success.title}</h1>
+            <p className="text-xl text-slate-600 mb-8">{i.onboarding.success.subtitle}</p>
         
         <div className="text-left mb-8">
           <h3 className="font-semibold mb-4">Next Steps:</h3>
           <ul className="space-y-2">
-            {i.cta.onboarding.success.nextSteps.map((step, index) => (
+            {i.onboarding.success.nextSteps.map((step, index) => (
               <li key={index} className="flex items-start gap-3">
                 <span className="text-brand-600 font-bold">{index + 1}.</span>
                 <span>{step}</span>
@@ -638,7 +638,7 @@ export default function OnboardingPage({ params }: { params: { locale: Locale } 
           href={`/${params.locale}`}
           className="inline-block px-8 py-4 bg-brand-600 text-white rounded-2xl font-semibold hover:bg-brand-700 transition-colors focus:outline-none focus:ring-4 focus:ring-brand-500 focus:ring-opacity-50"
         >
-          {i.cta.onboarding.success.cta}
+                        {i.onboarding.success.cta}
         </a>
       </div>
     </div>

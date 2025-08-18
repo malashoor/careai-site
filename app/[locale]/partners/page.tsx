@@ -1,9 +1,9 @@
 import Container from "@/components/Container";
-import { t } from "@/lib/dictionary";
+import { dictionary } from "@/lib/dictionary";
 import type { Locale } from "@/lib/i18n";
 
 export default function PartnersPage({ params }: { params: { locale: Locale } }) {
-  const i = t(params.locale);
+  const i = dictionary[params.locale];
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-brand-50 via-white to-white">
@@ -12,10 +12,10 @@ export default function PartnersPage({ params }: { params: { locale: Locale } })
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-              {i.cta.partners.title}
+              Partner with CareAI
             </h1>
             <p className="text-xl text-slate-600 mb-8">
-              {i.cta.partners.subtitle}
+              Join our network of healthcare providers and senior living communities
             </p>
           </div>
         </Container>

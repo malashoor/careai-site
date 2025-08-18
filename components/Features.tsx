@@ -24,7 +24,7 @@ export default function Features({ locale }: { locale: Locale }) {
                 />
               </div>
               <h3 className="font-semibold">{f.title}</h3>
-              <p className="text-sm text-slate-600 mt-2">{f.desc}</p>
+              <p className="text-sm text-slate-600 mt-2">{f.description}</p>
             </div>
           ))}
         </div>

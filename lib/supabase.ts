@@ -54,3 +54,48 @@ export interface RoleData {
   };
   created_at?: string;
 }
+
+export interface PartnerLead {
+  id?: string;
+  name: string;
+  email: string;
+  organization: string;
+  role: string;
+  phone?: string;
+  message: string;
+  partner_type: 'doctors' | 'hospitals' | 'insurance' | 'charities';
+  status: 'new' | 'contacted' | 'qualified' | 'converted' | 'rejected';
+  created_at?: string;
+}
+
+export interface Profile {
+  id: string;
+  email: string;
+  role: 'user' | 'admin';
+  created_at?: string;
+  updated_at?: string;
+}
+
+// Admin helper functions
+export async function checkAdminRole(userId: string): Promise<boolean> {
+  const supabase = getSupabase();
+  if (!supabase) return false;
+
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('role')
+    .eq('id', userId)
+    .single();
+
+  if (error || !data) return false;
+  return data.role === 'admin';
+}
+
+export async function getCurrentUser() {
+  const supabase = getSupabase();
+  if (!supabase) return null;
+
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error || !user) return null;
+  return user;
+}

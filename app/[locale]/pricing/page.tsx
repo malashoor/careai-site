@@ -35,7 +35,7 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
                 {idx === 1 && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="px-4 py-2 bg-brand-500 text-white text-sm font-semibold rounded-full">
-                      {i.pricing.mostPopular}
+                      Most Popular
                     </span>
                   </div>
                 )}
@@ -69,39 +69,7 @@ export default function PricingPage({ params }: { params: { locale: Locale } }) 
         </Container>
       </section>
 
-      {/* Enterprise Section */}
-      <section className="py-16 bg-slate-50">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {i.pricing.enterprise.title}
-            </h2>
-            <p className="text-xl text-slate-600 mb-8">
-              {i.pricing.enterprise.subtitle}
-            </p>
-            
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              {i.pricing.enterprise.features.map((feature) => (
-                <div key={feature} className="text-left">
-                  <div className="flex items-center gap-3">
-                    <svg className="w-6 h-6 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    <span className="font-semibold text-slate-800">{feature}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <a 
-              href="/contact" 
-              className="inline-block px-8 py-4 bg-brand-600 text-white rounded-2xl font-semibold hover:bg-brand-700 transition-colors"
-            >
-              {i.pricing.enterprise.cta}
-            </a>
-          </div>
-        </Container>
-      </section>
+
 
       {/* FAQ Section */}
       <section className="py-16">
