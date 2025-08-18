@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "sync": "node scripts/sync-assets.mjs ../CareAI-flutter/Flutter_app",
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run sync && next build",
     "start": "next start",
     "lint": "next lint"
   },

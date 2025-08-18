@@ -1,0 +1,11 @@
+{
+  "name": "CareAI",
+  "short_name": "CareAI",
+  "icons": [
+    { "src": "/icons/app_icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "theme_color": "#1aaeff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/en"
+}

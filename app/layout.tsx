@@ -8,6 +8,11 @@ const kufi = Noto_Kufi_Arabic({ subsets: ["arabic"], variable: "--font-kufi" });
 export const metadata = {
   title: "CareAI",
   description: "Companionship, reminders, and safety — powered by AI.",
+  manifest: "/site.webmanifest",
+};
+
+export const viewport = {
+  themeColor: "#1aaeff",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -21,7 +21,7 @@ export default function Pricing({ locale }: { locale: Locale }) {
               <ul className="mt-4 text-sm text-slate-700 space-y-2">
                 {tier.features.map((f) => <li key={f}>• {f}</li>)}
               </ul>
-              <a href="/signup" className="mt-6 inline-block px-5 py-3 rounded-xl bg-brand-600 text-white hover:bg-brand-700">Choose plan</a>
+              <a href="/signup" className="mt-6 inline-block px-5 py-3 rounded-2xl bg-brand-600 text-white hover:bg-brand-700">Choose plan</a>
             </div>
           ))}
         </div>
