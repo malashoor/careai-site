@@ -15,8 +15,11 @@ export default function Navbar({ locale }: { locale: Locale }) {
         <Link className="text-xl font-bold" href={base}>CareAI</Link>
         <div className="flex items-center gap-2">
           <Link className={link("")} href={base}>Home</Link>
+          <Link className={link("/features")} href={`${base}/features`}>Features</Link>
+          <Link className={link("/pricing")} href={`${base}/pricing`}>Pricing</Link>
+          <Link className={link("/about")} href={`${base}/about`}>About</Link>
           <Link className={link("/contact")} href={`${base}/contact`}>Contact</Link>
-          <Link className="ml-2 px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700" href={`${base}#pricing`}>
+          <Link className="ml-2 px-4 py-2 rounded-xl bg-brand-600 text-white hover:bg-brand-700" href={`${base}/onboarding`}>
             Get started
           </Link>
           {/* Lang switcher */}
