@@ -29,13 +29,13 @@ export default function Home({ params }: { params: { locale: Locale } }) {
                 href={`/${params.locale}/onboarding`} 
                 className="px-8 py-4 bg-white text-brand-600 rounded-2xl font-semibold hover:bg-brand-50 transition-colors"
               >
-                {i.cta.onboarding.primary}
+                {i.cta.onboarding.title}
               </a>
               <a 
                 href={`/${params.locale}/contact`} 
                 className="px-8 py-4 border-2 border-white text-white rounded-2xl font-semibold hover:bg-white hover:text-brand-600 transition-colors"
               >
-                {i.cta.onboarding.secondary}
+                Schedule demo
               </a>
             </div>
           </div>

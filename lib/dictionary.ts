@@ -87,10 +87,68 @@ const dict = {
     },
     cta: {
       onboarding: {
-        title: "Ready to get started?",
-        subtitle: "Join thousands of families who trust CareAI",
-        primary: "Start free trial",
-        secondary: "Schedule demo"
+        title: "Start Your CareAI Journey",
+        subtitle: "Tell us about yourself to get personalized recommendations",
+        steps: {
+          role: "Choose Your Role",
+          details: "Tell Us More",
+          success: "Welcome to CareAI!"
+        },
+        roles: {
+          senior: {
+            title: "I'm a Senior",
+            subtitle: "Looking for companionship and support",
+            icon: "👴"
+          },
+          family: {
+            title: "I'm Family/Caregiver",
+            subtitle: "Caring for a loved one",
+            icon: "👨‍👩‍👧‍👦"
+          },
+          professional: {
+            title: "I'm a Professional",
+            subtitle: "Healthcare provider or senior living",
+            icon: "🏥"
+          }
+        },
+        fields: {
+          basic: {
+            firstName: "First Name",
+            lastName: "Last Name",
+            email: "Email Address",
+            phone: "Phone Number (Optional)"
+          },
+          senior: {
+            age: "Age",
+            livingSituation: "Living Situation",
+            primaryConcern: "Primary Concern"
+          },
+          family: {
+            relationship: "Relationship to Senior",
+            seniorAge: "Senior's Age",
+            careLevel: "Care Level Needed",
+            primaryConcern: "Primary Concern"
+          },
+          professional: {
+            organization: "Organization Name",
+            role: "Your Role",
+            organizationType: "Organization Type",
+            useCase: "Primary Use Case"
+          },
+          consent: "I agree to receive communications from CareAI and accept the Terms of Service and Privacy Policy",
+          submit: "Complete Registration",
+          submitting: "Submitting..."
+        },
+        success: {
+          title: "Welcome to CareAI!",
+          subtitle: "Your account is being set up",
+          nextSteps: [
+            "Check your email for setup instructions",
+            "Download the CareAI mobile app",
+            "Schedule a personalized onboarding call"
+          ],
+          cta: "Continue to Dashboard"
+        }
       },
       partners: {
         title: "Partner with CareAI",
@@ -186,10 +244,68 @@ const dict = {
     },
     cta: {
       onboarding: {
-        title: "مستعد للبدء؟",
-        subtitle: "انضم إلى آلاف العائلات التي تثق بـ CareAI",
-        primary: "ابدأ التجربة المجانية",
-        secondary: "جدولة عرض توضيحي"
+        title: "ابدأ رحلتك مع كيرAI",
+        subtitle: "أخبرنا عن نفسك للحصول على توصيات مخصصة",
+        steps: {
+          role: "اختر دورك",
+          details: "أخبرنا المزيد",
+          success: "مرحباً بك في كيرAI!"
+        },
+        roles: {
+          senior: {
+            title: "أنا كبير سن",
+            subtitle: "أبحث عن رفقة ودعم",
+            icon: "👴"
+          },
+          family: {
+            title: "أنا عائلة/مقدم رعاية",
+            subtitle: "أعتني بأحبائي",
+            icon: "👨‍👩‍👧‍👦"
+          },
+          professional: {
+            title: "أنا محترف",
+            subtitle: "مقدم رعاية صحية أو سكن للمسنين",
+            icon: "🏥"
+          }
+        },
+        fields: {
+          basic: {
+            firstName: "الاسم الأول",
+            lastName: "اسم العائلة",
+            email: "عنوان البريد الإلكتروني",
+            phone: "رقم الهاتف (اختياري)"
+          },
+          senior: {
+            age: "العمر",
+            livingSituation: "وضع السكن",
+            primaryConcern: "القلق الأساسي"
+          },
+          family: {
+            relationship: "العلاقة مع كبير السن",
+            seniorAge: "عمر كبير السن",
+            careLevel: "مستوى الرعاية المطلوب",
+            primaryConcern: "القلق الأساسي"
+          },
+          professional: {
+            organization: "اسم المؤسسة",
+            role: "دورك",
+            organizationType: "نوع المؤسسة",
+            useCase: "الاستخدام الأساسي"
+          },
+          consent: "أوافق على تلقي رسائل من كيرAI وأقبل شروط الخدمة وسياسة الخصوصية",
+          submit: "إكمال التسجيل",
+          submitting: "جاري الإرسال..."
+        },
+        success: {
+          title: "مرحباً بك في كيرAI!",
+          subtitle: "يتم إعداد حسابك",
+          nextSteps: [
+            "تحقق من بريدك الإلكتروني للحصول على تعليمات الإعداد",
+            "قم بتحميل تطبيق كيرAI للهاتف المحمول",
+            "جدولة مكالمة إعداد مخصصة"
+          ],
+          cta: "المتابعة إلى لوحة التحكم"
+        }
       },
       partners: {
         title: "شراكة مع كيرAI",
