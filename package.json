@@ -6,6 +6,7 @@
     "sync": "node scripts/sync-assets.mjs ../CareAI-flutter/Flutter_app",
     "dev": "next dev",
     "build": "npm run sync && next build",
+    "build:netlify": "next build",
     "start": "next start",
     "lint": "next lint"
   },

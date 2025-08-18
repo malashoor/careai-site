@@ -36,6 +36,11 @@ for (const m of MAP) {
   const ok = copyDir(src, dest);
   if (!ok && !m.optional) {
     console.warn(`[warn] Missing: ${src}`);
+    // On Netlify, create empty directories to prevent build failures
+    if (process.env.NETLIFY) {
+      fs.mkdirSync(dest, { recursive: true });
+      console.log(`[info] Created empty directory for Netlify: ${dest}`);
+    }
   } else if (ok) {
     console.log(`[ok] Copied ${src} -> ${dest}`);
   }
