@@ -1,18 +1,37 @@
-import { type Locale } from "@/lib/i18n";
+"use client";
+
 import PartnerHero from "@/components/PartnerHero";
 import ValueProps from "@/components/ValueProps";
 import WorkflowDiagram from "@/components/WorkflowDiagram";
 import CaseStudy from "@/components/CaseStudy";
 import PartnerForm from "@/components/PartnerForm";
+import { trackEvents } from "@/lib/analytics";
 
-export default function InsurancePage({ params }: { params: { locale: Locale } }) {
+export default function InsurancePage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
   return (
-    <>
-      <PartnerHero locale={params.locale} type="insurance" />
-      <ValueProps locale={params.locale} type="insurance" />
-      <WorkflowDiagram locale={params.locale} type="insurance" />
-      <CaseStudy locale={params.locale} />
-      <PartnerForm locale={params.locale} type="insurance" />
-    </>
+    <main>
+      <PartnerHero locale={locale} type="insurance" />
+      <ValueProps locale={locale} type="insurance" />
+      <WorkflowDiagram locale={locale} type="insurance" />
+      <CaseStudy locale={locale} />
+      <section className="py-16 bg-brand-50">
+        <div className="max-w-2xl mx-auto px-4">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                {locale === "ar" ? "انضم إلينا كشريك" : "Partner With Us"}
+              </h2>
+              <p className="text-lg text-slate-600">
+                {locale === "ar"
+                  ? "ساعد في تحسين رعاية المرضى من خلال الذكاء الاصطناعي"
+                  : "Help improve patient care with AI"
+                }
+              </p>
+            </div>
+            <PartnerForm type="insurance" locale={locale} />
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

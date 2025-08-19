@@ -1,0 +1,7 @@
+# API routes -> Netlify Functions
+/api/*   /.netlify/functions/api/:splat   200
+
+# Contact form -> Netlify Function
+/.netlify/functions/contact   /.netlify/functions/contact   200
+
+/ /en 308!

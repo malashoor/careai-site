@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://careai.app/sitemap.xml
+Sitemap: https://www.careai.app/sitemap.xml

@@ -1,31 +1,91 @@
-import Container from "./Container";
-import { type Locale } from "@/lib/i18n";
-import { t } from "@/lib/dictionary";
+"use client";
 
-export default function Hero({ locale }: { locale: Locale }) {
-  const i = t(locale);
+import { dictionary } from "@/lib/dictionary";
+import { trackEvents } from "@/lib/analytics";
+import SmartLink from "@/components/Ui/SmartLink";
+import { getGetStartedHref, getLearnMoreHref, isAppStoreLink, isDeepLink } from "@/lib/cta";
+
+interface HeroProps {
+  locale: "en" | "ar";
+}
+
+export default function Hero({ locale }: HeroProps) {
+  const i = dictionary[locale];
+  const isRTL = locale === "ar";
+
+  const handleCTAClick = (type: "primary" | "secondary") => {
+    trackEvents.ctaHero(type, locale);
+  };
+
+  const getStartedHref = getGetStartedHref(locale);
+  const learnMoreHref = getLearnMoreHref(locale);
+
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-100 via-white to-white" />
-      <Container>
-        <div className="relative py-16 md:py-24 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">{i.hero.title}</h1>
-            <p className="mt-5 text-lg md:text-xl text-slate-700 max-w-2xl">{i.hero.subtitle}</p>
-            <div className="mt-8 flex items-center gap-3">
-              <a href="#pricing" className="px-6 py-3 rounded-2xl bg-brand-600 text-white hover:bg-brand-700">{i.hero.ctaPrimary}</a>
-              <a href="#features" className="px-6 py-3 rounded-2xl border border-slate-300 bg-white hover:bg-slate-50">{i.hero.ctaSecondary}</a>
+    <section className="section bg-white">
+      <div className="mx-auto max-w-5xl px-4">
+        <div className="text-center max-w-4xl mx-auto">
+          {/* Main headline */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-ink-900 mb-6 leading-tight">
+            {i.hero.title}
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-ink-500 mb-8 leading-relaxed max-w-3xl mx-auto">
+            {i.hero.subtitle}
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10">
+            <SmartLink
+              href={getStartedHref}
+              variant="button"
+              aria-label="Get started with CareAI"
+              onClick={() => handleCTAClick("primary")}
+              {...(isAppStoreLink() && { target: "_blank", rel: "noopener noreferrer" })}
+              {...(isDeepLink() && { "data-deeplink": "true" })}
+              className="cursor-pointer"
+            >
+              {i.hero.ctaPrimary}
+            </SmartLink>
+            <SmartLink
+              href={learnMoreHref}
+              variant="ghost"
+              aria-label="Learn more about CareAI features"
+              onClick={() => handleCTAClick("secondary")}
+              className="cursor-pointer"
+            >
+              {i.hero.ctaSecondary}
+            </SmartLink>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="mt-12 pt-8 border-t border-ink-150 ink-on-light">
+            <p className="text-sm text-ink-400 mb-4">
+              {locale === "ar" ? "مستخدم من قبل آلاف العائلات ومقدمي الرعاية" : "Trusted by thousands of families and caregivers"}
+            </p>
+            <div className="flex justify-center items-center space-x-8 text-ink-500">
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl">🛡️</span>
+                <span className="text-sm font-medium">
+                  {locale === "ar" ? "آمن ومحمي" : "Safe & Secure"}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl">⚡</span>
+                <span className="text-sm font-medium">
+                  {locale === "ar" ? "سهل الاستخدام" : "Easy to Use"}
+                </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-2xl">💙</span>
+                <span className="text-sm font-medium">
+                  {locale === "ar" ? "مصمم للعائلة" : "Family-First"}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="card p-0 overflow-hidden">
-            <img
-              src="/images/welcome_ai_hero.png"
-              alt="CareAI companion preview"
-              className="w-full h-auto"
-            />
-          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

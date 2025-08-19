@@ -3,11 +3,33 @@ import type { Locale } from "./i18n";
 export const dictionary = {
   en: {
     metaTitle: "CareAI - AI-Powered Healthcare Solutions",
+    metaDescription: "AI companion for seniors with medication reminders, health check-ins, and SOS alerts. Transform patient care with intelligent automation and predictive analytics.",
     hero: {
       title: "AI-Powered Healthcare Solutions",
       subtitle: "Transform patient care with intelligent automation, predictive analytics, and seamless integration across all healthcare systems.",
       ctaPrimary: "Get Started",
       ctaSecondary: "Learn More"
+    },
+    howItWorks: {
+      title: "How it works",
+      subtitle: "Simple, effective AI companionship in three steps",
+      steps: [
+        {
+          title: "Talk",
+          description: "The AI companion checks in, listens, and reminds.",
+          icon: "💬"
+        },
+        {
+          title: "Nudge", 
+          description: "Timely medication and hydration prompts.",
+          icon: "⏰"
+        },
+        {
+          title: "Protect",
+          description: "SOS alerts family and care teams instantly.",
+          icon: "🛡️"
+        }
+      ]
     },
     features: {
       title: "Key Features",
@@ -25,52 +47,119 @@ export const dictionary = {
       tiers: [
         {
           name: "Starter",
-          price: "$99",
+          price: "9",
           period: "/month",
           description: "Perfect for small clinics",
           features: ["Up to 100 patients", "Basic AI diagnostics", "Email support", "Standard integrations"],
-          cta: "Start Free Trial",
+          cta: { text: "Start Free Trial", href: "/en/onboarding" },
           popular: false
         },
         {
           name: "Professional",
-          price: "$299",
+          price: "19",
           period: "/month",
           description: "Ideal for growing practices",
           features: ["Up to 500 patients", "Advanced AI features", "Priority support", "Custom integrations", "Analytics dashboard"],
-          cta: "Start Free Trial",
+          cta: { text: "Start Free Trial", href: "/en/onboarding" },
           popular: true
         },
         {
           name: "Enterprise",
-          price: "Custom",
-          period: "",
+          price: "39",
+          period: "/month",
           description: "For large healthcare systems",
           features: ["Unlimited patients", "Full AI suite", "24/7 support", "Custom development", "Dedicated account manager"],
-          cta: "Contact Sales",
+          cta: { text: "Contact Sales", href: "/en/contact" },
           popular: false
         }
       ]
     },
-    about: {
-      title: "About CareAI",
-      subtitle: "Empowering healthcare with intelligent AI solutions",
-      mission: {
-        title: "Our Mission",
-        content: "We believe every healthcare organization deserves access to cutting-edge AI technology that improves patient outcomes and operational efficiency. CareAI combines advanced machine learning with healthcare expertise to create solutions that truly transform care delivery."
-      },
-      team: {
-        title: "Our Team",
-        subtitle: "Healthcare experts, AI researchers, and compassionate innovators",
-        members: [
-          { name: "Dr. Sarah Chen", role: "Chief Medical Officer", bio: "20+ years in healthcare technology" },
-          { name: "Marcus Rodriguez", role: "Head of AI", bio: "Former Google Health researcher" },
-          { name: "Aisha Patel", role: "UX Director", bio: "Specialist in healthcare UX design" }
+    partners: {
+      doctors: {
+        title: "For Doctors & Clinics",
+        subtitle: "Reduce missed doses, increase adherence visibility, exportable summaries—without adding clinic workload.",
+        valueProps: [
+          "Reduce missed-dose rates by up to 30–40%",
+          "Automated check-ins and escalation rules", 
+          "CSV export; EHR integration roadmap"
+        ],
+        workflow: [
+          "Patient enrollment",
+          "Daily AI check-ins",
+          "Adherence monitoring",
+          "Provider dashboard"
         ]
       },
+      hospitals: {
+        title: "For Hospitals & Health Systems",
+        subtitle: "Post-discharge support that lowers readmissions through daily nudges and caregiver visibility.",
+        valueProps: [
+          "Shorter readmissions through adherence + hydration nudges",
+          "Post-discharge care plans with family visibility",
+          "Integration with existing care management systems"
+        ],
+        workflow: [
+          "Discharge planning",
+          "Family onboarding",
+          "Daily health checks",
+          "Care team alerts"
+        ]
+      },
+      insurance: {
+        title: "For Insurance & Payers",
+        subtitle: "Adherence uplift → fewer avoidable claims. Pilot-ready cohorts and reporting.",
+        valueProps: [
+          "Better adherence → fewer avoidable claims",
+          "Population dashboards (pilot-ready)",
+          "Risk stratification and intervention targeting"
+        ],
+        workflow: [
+          "Member identification",
+          "Risk assessment",
+          "Intervention delivery",
+          "Outcome measurement"
+        ]
+      },
+      charities: {
+        title: "For Charities & Senior Organizations",
+        subtitle: "Sponsored seats, multilingual support, 5-minute onboarding.",
+        valueProps: [
+          "Sponsored seats for underserved populations",
+          "Multilingual support (EN/AR)",
+          "Lightweight onboarding process",
+          "Community health monitoring"
+        ],
+        workflow: [
+          "Organization signup",
+          "Member enrollment",
+          "AI companion setup",
+          "Ongoing support"
+        ]
+      }
+    },
+    about: {
+      title: "About CareAI",
+      subtitle: "We're an early-stage startup building safe, helpful AI for seniors and caregivers.",
+      mission: {
+        title: "Our Mission",
+        body:
+          "We believe every care team deserves access to simple, affordable tools that improve safety and quality of life. CareAI combines conversational AI with caregiver workflows to reduce friction and increase adherence — without pretending to replace clinical judgement."
+      },
       partners: {
-        title: "Trusted by Leading Organizations",
-        subtitle: "Partnering with healthcare providers and health systems worldwide"
+        title: "Partner With Us",
+        body:
+          "We're actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you're interested in co-designing features or evaluating outcomes, we'd love to talk."
+      },
+      advisory: {
+        title: "Advisory Council (in formation)",
+        note:
+          "We'll publish our clinical advisors, partners, and pilot sites here once agreements are finalized."
+      },
+      ctas: {
+        contact: "Contact us",
+        doctors: "For clinicians",
+        organizations: "For organizations",
+        getStarted: "Get started"
       }
     },
     contact: {
@@ -98,9 +187,9 @@ export const dictionary = {
           icon: "👨‍👩‍👧‍👦"
         },
         professional: {
-          title: "I'm a Professional",
-          subtitle: "Healthcare provider or senior living",
-          icon: "🏥"
+          title: "I'm a Healthcare Professional",
+          subtitle: "Improving patient care with AI",
+          icon: "👨‍⚕️"
         }
       },
       fields: {
@@ -113,167 +202,87 @@ export const dictionary = {
         senior: {
           age: "Age",
           livingSituation: "Living Situation",
-          primaryConcern: "Primary Concern"
+          primaryConcern: "Primary Health Concern"
         },
         family: {
           relationship: "Relationship to Senior",
           seniorAge: "Senior's Age",
-          careLevel: "Care Level Needed",
-          primaryConcern: "Primary Concern"
+          careLevel: "Level of Care Needed",
+          primaryConcern: "Primary Health Concern"
         },
         professional: {
           organization: "Organization Name",
-          role: "Your Role",
+          role: "Professional Role",
           organizationType: "Organization Type",
           useCase: "Primary Use Case"
         },
-        consent: "I agree to receive communications from CareAI and accept the Terms of Service and Privacy Policy",
-        submit: "Complete Registration",
-        submitting: "Submitting..."
+        consent: "I agree to the Terms of Service and Privacy Policy, and consent to CareAI contacting me about my inquiry.",
+        submit: "Get Started",
+        submitting: "Setting up your account..."
       },
       success: {
         title: "Welcome to CareAI!",
-        subtitle: "Your account is being set up",
+        subtitle: "Your account is being set up. Here's what happens next:",
         nextSteps: [
-          "Check your email for setup instructions",
-          "Download the CareAI mobile app",
-          "Schedule a personalized onboarding call"
+          "We'll review your information and match you with the right plan",
+          "You'll receive a welcome email with next steps",
+          "Our team will reach out within 24 hours to get you started",
+          "Your AI companion will be ready in 2-3 business days"
         ],
-        cta: "Continue to Dashboard"
+        cta: "Return to Home"
+      },
+      cta: {
+        title: "Ready to Get Started?",
+        subtitle: "Join thousands of families and healthcare providers already using CareAI",
+        button: "Start Your Journey"
       }
     },
-
     footer: {
-      rights: "All rights reserved.",
+      rights: "All rights reserved",
       links: [
-        { href: "/about", label: "About" },
-        { href: "/contact", label: "Contact" },
-        { href: "/privacy", label: "Privacy" },
-        { href: "/terms", label: "Terms" }
+        { href: "/en/legal/terms", label: "Terms" },
+        { href: "/en/legal/privacy", label: "Privacy" }
       ]
-    },
-    partners: {
-      doctors: {
-        title: "For Healthcare Providers",
-        subtitle: "Empower your practice with AI-driven insights and automation",
-        valueProps: [
-          { title: "Reduce Diagnostic Errors", description: "AI assistance reduces misdiagnosis by up to 40%" },
-          { title: "Streamline Workflows", description: "Automate routine tasks and focus on patient care" },
-          { title: "Improve Outcomes", description: "Data-driven insights lead to better treatment decisions" }
-        ],
-        workflow: [
-          { step: 1, title: "Patient Intake", description: "AI-powered symptom analysis and triage" },
-          { step: 2, title: "Diagnostic Support", description: "Evidence-based recommendations and alerts" },
-          { step: 3, title: "Treatment Planning", description: "Personalized care pathways and monitoring" },
-          { step: 4, title: "Follow-up", description: "Automated reminders and outcome tracking" }
-        ]
-      },
-      hospitals: {
-        title: "For Hospitals & Health Systems",
-        subtitle: "Scale AI solutions across multiple departments and facilities",
-        valueProps: [
-          { title: "System-wide Integration", description: "Connect all departments with unified AI platform" },
-          { title: "Resource Optimization", description: "Intelligent allocation of staff and equipment" },
-          { title: "Quality Assurance", description: "Continuous monitoring and improvement protocols" }
-        ],
-        workflow: [
-          { step: 1, title: "Department Setup", description: "Configure AI workflows per department needs" },
-          { step: 2, title: "Staff Training", description: "Comprehensive onboarding and certification" },
-          { step: 3, title: "Go-live Support", description: "24/7 assistance during transition period" },
-          { step: 4, title: "Ongoing Optimization", description: "Regular performance reviews and updates" }
-        ]
-      },
-      insurance: {
-        title: "For Insurance Providers",
-        subtitle: "Leverage AI to improve claims processing and risk assessment",
-        valueProps: [
-          { title: "Faster Claims Processing", description: "Reduce processing time from days to hours" },
-          { title: "Fraud Detection", description: "Advanced algorithms identify suspicious patterns" },
-          { title: "Risk Assessment", description: "Predictive modeling for better underwriting decisions" }
-        ],
-        workflow: [
-          { step: 1, title: "Claims Submission", description: "AI-powered document analysis and validation" },
-          { step: 2, title: "Risk Evaluation", description: "Automated assessment and scoring" },
-          { step: 3, title: "Decision Support", description: "Evidence-based recommendations for adjusters" },
-          { step: 4, title: "Settlement", description: "Streamlined payment processing and tracking" }
-        ]
-      },
-      charities: {
-        title: "For Healthcare Charities",
-        subtitle: "Extend your impact with AI-powered healthcare solutions",
-        valueProps: [
-          { title: "Scale Your Mission", description: "Reach more beneficiaries with intelligent automation" },
-          { title: "Data-Driven Impact", description: "Measure and demonstrate your organization's effectiveness" },
-          { title: "Cost Efficiency", description: "Maximize resources for patient care and programs" }
-        ],
-        workflow: [
-          { step: 1, title: "Needs Assessment", description: "AI-powered analysis of community health needs" },
-          { step: 2, title: "Program Design", description: "Data-driven intervention planning and optimization" },
-          { step: 3, title: "Implementation", description: "Scalable deployment across multiple locations" },
-          { step: 4, title: "Impact Measurement", description: "Comprehensive outcome tracking and reporting" }
-        ]
-      },
-      form: {
-        title: "Partner With Us",
-        subtitle: "Join the future of healthcare technology",
-        fields: {
-          name: "Full Name",
-          email: "Email Address",
-          organization: "Organization Name",
-          role: "Your Role",
-          phone: "Phone Number",
-          message: "Tell us about your needs",
-          file: "Upload Documents (Optional)"
-        },
-        submit: "Submit Partnership Request",
-        success: "Thank you for your interest! We'll be in touch within 24 hours."
-      }
-    },
-    admin: {
-      title: "Admin Dashboard",
-      leads: {
-        title: "Partner Leads",
-        search: "Search leads...",
-        filters: {
-          status: "Status",
-          type: "Type",
-          date: "Date Range"
-        },
-        table: {
-          name: "Name",
-          email: "Email",
-          organization: "Organization",
-          type: "Type",
-          status: "Status",
-          date: "Date",
-          actions: "Actions"
-        }
-      },
-      auth: {
-        login: "Sign In",
-        email: "Email Address",
-        magicLink: "Send Magic Link",
-        googleOAuth: "Continue with Google",
-        unauthorized: "You don't have permission to access this page"
-      }
     }
   },
   ar: {
     metaTitle: "كيرAI - حلول الرعاية الصحية المدعومة بالذكاء الاصطناعي",
+    metaDescription: "رفيق الذكاء الاصطناعي للمسنين مع تذكيرات الأدوية، فحوصات صحية يومية، وتنبيهات SOS. حسّن رعاية المرضى بالذكاء الاصطناعي والتحليلات التنبؤية.",
     hero: {
       title: "حلول الرعاية الصحية المدعومة بالذكاء الاصطناعي",
       subtitle: "حوّل رعاية المرضى بالذكاء الاصطناعي والتحليلات التنبؤية والتكامل السلس عبر جميع أنظمة الرعاية الصحية.",
       ctaPrimary: "ابدأ الآن",
       ctaSecondary: "اعرف المزيد"
     },
+    howItWorks: {
+      title: "كيف يعمل",
+      subtitle: "رفقة الذكاء الاصطناعي البسيطة والفعالة في ثلاث خطوات",
+      steps: [
+        {
+          title: "تحدث",
+          description: "يراجع رفيق الذكاء الاصطناعي، يستمع، ويذكر.",
+          icon: "💬"
+        },
+        {
+          title: "ذكر",
+          description: "تذكيرات في الوقت المناسب للأدوية والترطيب.",
+          icon: "⏰"
+        },
+        {
+          title: "حمي",
+          description: "تنبيهات SOS تنبه العائلة وفريق الرعاية فوراً.",
+          icon: "🛡️"
+        }
+      ]
+    },
     features: {
-      title: "الميزات الرئيسية",
-      subtitle: "حلول الذكاء الاصطناعي الشاملة التي تحول تقديم الرعاية",
+      title: "المميزات الرئيسية",
+      subtitle: "حلول شاملة للذكاء الاصطناعي تحوّل تقديم الرعاية الصحية",
       items: [
-        { title: "التشخيص بالذكاء الاصطناعي", description: "مساعدة تشخيصية متقدمة بدقة تزيد عن 95%", icon: "🔬" },
-        { title: "الجدولة الذكية", description: "حجز المواعيد الذكي وتحسين الموارد", icon: "📅" },
+        { title: "تشخيص الذكاء الاصطناعي", description: "مساعدة تشخيصية متقدمة بدقة 95%+", icon: "🔬" },
+        { title: "جدولة ذكية", description: "حجز المواعيد الذكي وتحسين الموارد", icon: "📅" },
         { title: "تحليلات المرضى", description: "رؤى شاملة للمرضى والنمذجة التنبؤية", icon: "📊" },
-        { title: "مركز التكامل", description: "اتصال سلس مع أنظمة الرعاية الصحية الموجودة", icon: "🔗" }
+        { title: "محور التكامل", description: "اتصال سلس مع أنظمة الرعاية الصحية الموجودة", icon: "🔗" }
       ]
     },
     pricing: {
@@ -282,241 +291,203 @@ export const dictionary = {
       tiers: [
         {
           name: "البداية",
-          price: "$99",
+          price: "9",
           period: "/شهر",
           description: "مثالية للعيادات الصغيرة",
-          features: ["حتى 100 مريض", "التشخيص الأساسي بالذكاء الاصطناعي", "دعم البريد الإلكتروني", "التكاملات القياسية"],
-          cta: "ابدأ التجربة المجانية",
+          features: ["حتى 100 مريض", "تشخيص أساسي بالذكاء الاصطناعي", "دعم عبر البريد الإلكتروني", "تكاملات قياسية"],
+          cta: { text: "ابدأ التجربة المجانية", href: "/ar/onboarding" },
           popular: false
         },
         {
           name: "المهني",
-          price: "$299",
+          price: "19",
           period: "/شهر",
           description: "مثالية للممارسات النامية",
-          features: ["حتى 500 مريض", "ميزات الذكاء الاصطناعي المتقدمة", "الدعم ذو الأولوية", "التكاملات المخصصة", "لوحة التحكم التحليلية"],
-          cta: "ابدأ التجربة المجانية",
+          features: ["حتى 500 مريض", "مميزات الذكاء الاصطناعي المتقدمة", "دعم ذو أولوية", "تكاملات مخصصة", "لوحة تحليلات"],
+          cta: { text: "ابدأ التجربة المجانية", href: "/ar/onboarding" },
           popular: true
         },
         {
           name: "المؤسسة",
-          price: "مخصص",
-          period: "",
+          price: "39",
+          period: "/شهر",
           description: "لأنظمة الرعاية الصحية الكبيرة",
-          features: ["مرضى غير محدودين", "مجموعة الذكاء الاصطناعي الكاملة", "دعم 24/7", "التطوير المخصص", "مدير حساب مخصص"],
-          cta: "اتصل بالمبيعات",
+          features: ["مرضى غير محدودين", "مجموعة الذكاء الاصطناعي الكاملة", "دعم 24/7", "تطوير مخصص", "مدير حساب مخصص"],
+          cta: { text: "اتصل بالمبيعات", href: "/ar/contact" },
           popular: false
         }
       ]
     },
-    about: {
-      title: "عن كيرAI",
-      subtitle: "تمكين الرعاية الصحية بحلول الذكاء الاصطناعي الذكية",
-      mission: {
-        title: "مهمتنا",
-        content: "نؤمن بأن كل منظمة رعاية صحية تستحق الوصول إلى تقنية الذكاء الاصطناعي المتطورة التي تحسن نتائج المرضى وكفاءة العمليات. يجمع كيرAI بين التعلم الآلي المتقدم والخبرة في الرعاية الصحية لإنشاء حلول تحول حقاً تقديم الرعاية."
-      },
-      team: {
-        title: "فريقنا",
-        subtitle: "خبراء الرعاية الصحية وباحثو الذكاء الاصطناعي والمبتكرون الرحيمون",
-        members: [
-          { name: "د. سارة تشين", role: "الرئيس الطبي", bio: "20+ سنة في تقنية الرعاية الصحية" },
-          { name: "ماركوس رودريغيز", role: "رئيس الذكاء الاصطناعي", bio: "باحث سابق في Google Health" },
-          { name: "عائشة باتيل", role: "مدير تجربة المستخدم", bio: "متخصصة في تصميم تجربة المستخدم للرعاية الصحية" }
+    partners: {
+      doctors: {
+        title: "للأطباء والعيادات",
+        subtitle: "قلل الجرعات المفقودة، زد رؤية الالتزام، ملخصات قابلة للتصدير—بدون إضافة عبء عمل العيادة.",
+        valueProps: [
+          "قلل معدلات الجرعات المفقودة بنسبة تصل إلى 30-40%",
+          "فحوصات آلية وقواعد تصعيد",
+          "تصدير CSV؛ خارطة طريق تكامل EHR"
+        ],
+        workflow: [
+          "تسجيل المريض",
+          "فحوصات الذكاء الاصطناعي اليومية",
+          "مراقبة الالتزام",
+          "لوحة تحكم المزود"
         ]
       },
+      hospitals: {
+        title: "للمستشفيات وأنظمة الرعاية الصحية",
+        subtitle: "دعم ما بعد الخروج يقلل إعادة القبول من خلال التذكيرات اليومية ورؤية مقدم الرعاية.",
+        valueProps: [
+          "إعادة قبول أقصر من خلال الالتزام + تذكيرات الترطيب",
+          "خطط رعاية ما بعد الخروج مع رؤية العائلة",
+          "التكامل مع أنظمة إدارة الرعاية الموجودة"
+        ],
+        workflow: [
+          "تخطيط الخروج",
+          "إعداد العائلة",
+          "فحوصات صحية يومية",
+          "تنبيهات فريق الرعاية"
+        ]
+      },
+      insurance: {
+        title: "للتأمين والمدفوعين",
+        subtitle: "رفع الالتزام → مطالبات أقل قابلة للتجنب. مجموعات جاهزة للاختبار والتقارير.",
+        valueProps: [
+          "التزام أفضل → مطالبات أقل قابلة للتجنب",
+          "لوحات تحكم السكانية (جاهزة للاختبار)",
+          "التصنيف حسب المخاطر واستهداف التدخل"
+        ],
+        workflow: [
+          "تحديد الأعضاء",
+          "تقييم المخاطر",
+          "تقديم التدخل",
+          "قياس النتائج"
+        ]
+      },
+      charities: {
+        title: "للجمعيات الخيرية ومنظمات المسنين",
+        subtitle: "مقاعد مدعومة، دعم متعدد اللغات، إعداد في 5 دقائق.",
+        valueProps: [
+          "مقاعد مدعومة للسكان المحرومين",
+          "دعم متعدد اللغات (EN/AR)",
+          "عملية إعداد خفيفة",
+          "مراقبة صحة المجتمع"
+        ],
+        workflow: [
+          "تسجيل المنظمة",
+          "تسجيل الأعضاء",
+          "إعداد رفيق الذكاء الاصطناعي",
+          "دعم مستمر"
+        ]
+      }
+    },
+    about: {
+      title: "نبذة عن CareAI",
+      subtitle:
+        "نحن شركة ناشئة في مرحلة مبكرة نبني حلول ذكاء اصطناعي آمنة ومفيدة لكبار السن ومقدمي الرعاية.",
+      mission: {
+        title: "رسالتنا",
+        body:
+          "نؤمن بأن لكل فريق رعاية الحق في أدوات بسيطة وميسورة التكلفة تحسّن السلامة وجودة الحياة. تجمع CareAI بين المحادثة الذكية وتدفقات عمل مقدمي الرعاية لتقليل التعقيد وزيادة الالتزام — دون ادعاء استبدال الحكم السريري."
+      },
       partners: {
-        title: "موثوق به من قبل المنظمات الرائدة",
-        subtitle: "شراكة مع مقدمي الرعاية الصحية وأنظمة الصحة في جميع أنحاء العالم"
+        title: "شراكات",
+        body:
+          "نبحث عن شركاء لبرامج تجريبية: أطباء، دور رعاية، شركات تأمين وأنظمة صحية. إذا كنت مهتماً بتطوير المزايا أو قياس النتائج معنا، يسعدنا التواصل."
+      },
+      advisory: {
+        title: "مجلس استشاري (قيد التأسيس)",
+        note:
+          "سننشر قائمة المستشارين والشركاء والمواقع التجريبية هنا عند إتمام الاتفاقيات."
+      },
+      ctas: {
+        contact: "تواصل معنا",
+        doctors: "للأطباء",
+        organizations: "للمنظمات",
+        getStarted: "ابدأ الآن"
       }
     },
     contact: {
       title: "اتصل بنا",
-      subtitle: "أسئلة أو شراكات أو إعلام — يسعدنا تواصلك.",
-      submit: "إرسال رسالة"
+      subtitle: "أسئلة، شراكات، أو صحافة — نود أن نسمع منك.",
+      submit: "إرسال الرسالة"
     },
     onboarding: {
-      title: "ابدأ رحلتك في كيرAI",
-      subtitle: "أخبرنا عن نفسك للحصول على توصيات شخصية",
+      title: "ابدأ رحلة كيرAI",
+      subtitle: "أخبرنا عن نفسك للحصول على توصيات مخصصة",
       steps: {
         role: "اختر دورك",
         details: "أخبرنا المزيد",
-        success: "أهلاً بك في كيرAI!"
+        success: "مرحباً بك في كيرAI!"
       },
       roles: {
         senior: {
           title: "أنا مسن",
-          subtitle: "بحث عن شريك ودعم",
+          subtitle: "أبحث عن الرفقة والدعم",
           icon: "👴"
         },
         family: {
-          title: "أنا عائلة/مرافق",
-          subtitle: "الرعاية لأحد المحبوبين",
+          title: "أنا عائلة/مقدم رعاية",
+          subtitle: "أرعى أحد الأحباء",
           icon: "👨‍👩‍👧‍👦"
         },
         professional: {
-          title: "أنا متخصص",
-          subtitle: "مقدم رعاية صحية أو سكن سنوي",
-          icon: "🏥"
+          title: "أنا محترف رعاية صحية",
+          subtitle: "أحسن رعاية المرضى بالذكاء الاصطناعي",
+          icon: "👨‍⚕️"
         }
       },
       fields: {
         basic: {
           firstName: "الاسم الأول",
-          lastName: "الاسم الأخير",
+          lastName: "اسم العائلة",
           email: "عنوان البريد الإلكتروني",
           phone: "رقم الهاتف (اختياري)"
         },
         senior: {
           age: "العمر",
-          livingSituation: "المكان الذي تعيش فيه",
-          primaryConcern: "القضاء الرئيسي"
+          livingSituation: "وضع المعيشة",
+          primaryConcern: "المخاوف الصحية الأساسية"
         },
         family: {
-          relationship: "العلاقة مع المسن",
+          relationship: "العلاقة بالمسن",
           seniorAge: "عمر المسن",
-          careLevel: "المستوى المطلوب من الرعاية",
-          primaryConcern: "القضاء الرئيسي"
+          careLevel: "مستوى الرعاية المطلوبة",
+          primaryConcern: "المخاوف الصحية الأساسية"
         },
         professional: {
           organization: "اسم المنظمة",
-          role: "دورك",
+          role: "الدور المهني",
           organizationType: "نوع المنظمة",
-          useCase: "الاستخدام الأساسي"
+          useCase: "حالة الاستخدام الأساسية"
         },
-        consent: "أوافق على استقبال التواصل من كيرAI وقبول الشروط وسياسة الخصوصية",
-        submit: "إكمال التسجيل",
-        submitting: "جاري التقديم..."
+        consent: "أوافق على شروط الخدمة وسياسة الخصوصية، وأوافق على أن يتصل بي كيرAI بخصوص استفساري.",
+        submit: "ابدأ الآن",
+        submitting: "إعداد حسابك..."
       },
       success: {
-        title: "أهلاً بك في كيرAI!",
-        subtitle: "يتم إعداد حسابك",
+        title: "مرحباً بك في كيرAI!",
+        subtitle: "يتم إعداد حسابك. إليك ما يحدث بعد ذلك:",
         nextSteps: [
-          "التحقق من بريدك الإلكتروني لتعليمات الإعداد",
-          "تحميل تطبيق كيرAI المحمول",
-          "تنظيم مكالمة إعداد على الإنترنت شخصي"
+          "سنراجع معلوماتك ونطابقك مع الخطة الصحيحة",
+          "ستتلقى بريد إلكتروني ترحيبي مع الخطوات التالية",
+          "سيتواصل فريقنا معك خلال 24 ساعة لبدء العمل",
+          "سيكون رفيق الذكاء الاصطناعي جاهزاً في 2-3 أيام عمل"
         ],
-        cta: "المتابعة لللوحة التحكم"
+        cta: "العودة إلى الصفحة الرئيسية"
+      },
+      cta: {
+        title: "هل أنت مستعد للبدء؟",
+        subtitle: "انضم إلى آلاف العائلات ومقدمي الرعاية الصحية الذين يستخدمون كيرAI بالفعل",
+        button: "ابدأ رحلتك"
       }
     },
-
     footer: {
-      rights: "جميع الحقوق محفوظة.",
+      rights: "جميع الحقوق محفوظة",
       links: [
-        { href: "/about", label: "حول" },
-        { href: "/contact", label: "اتصل" },
-        { href: "/privacy", label: "الخصوصية" },
-        { href: "/terms", label: "الشروط" }
+        { href: "/ar/legal/terms", label: "الشروط" },
+        { href: "/ar/legal/privacy", label: "الخصوصية" }
       ]
-    },
-    partners: {
-      doctors: {
-        title: "لمقدمي الرعاية الصحية",
-        subtitle: "عزز ممارستك بالرؤى والتحسينات المدعومة بالذكاء الاصطناعي",
-        valueProps: [
-          { title: "تقليل أخطاء التشخيص", description: "المساعدة بالذكاء الاصطناعي تقلل من سوء التشخيص بنسبة تصل إلى 40%" },
-          { title: "تبسيط سير العمل", description: "أتمتة المهام الروتينية والتركيز على رعاية المرضى" },
-          { title: "تحسين النتائج", description: "الرؤى المدعومة بالبيانات تؤدي إلى قرارات علاجية أفضل" }
-        ],
-        workflow: [
-          { step: 1, title: "استقبال المريض", description: "تحليل الأعراض والفرز المدعوم بالذكاء الاصطناعي" },
-          { step: 2, title: "الدعم التشخيصي", description: "توصيات قائمة على الأدلة والتنبيهات" },
-          { step: 3, title: "تخطيط العلاج", description: "مسارات الرعاية الشخصية والمراقبة" },
-          { step: 4, title: "المتابعة", description: "تذكيرات آلية وتتبع النتائج" }
-        ]
-      },
-      hospitals: {
-        title: "للمستشفيات وأنظمة الصحة",
-        subtitle: "وسّع حلول الذكاء الاصطناعي عبر أقسام ومرافق متعددة",
-        valueProps: [
-          { title: "التكامل على مستوى النظام", description: "ربط جميع الأقسام بمنصة ذكاء اصطناعي موحدة" },
-          { title: "تحسين الموارد", description: "التوزيع الذكي للموظفين والمعدات" },
-          { title: "ضمان الجودة", description: "بروتوكولات المراقبة والتحسين المستمرة" }
-        ],
-        workflow: [
-          { step: 1, title: "إعداد القسم", description: "تكوين سير عمل الذكاء الاصطناعي حسب احتياجات كل قسم" },
-          { step: 2, title: "تدريب الموظفين", description: "التوجيه الشامل والشهادات" },
-          { step: 3, title: "دعم التشغيل", description: "المساعدة 24/7 خلال فترة الانتقال" },
-          { step: 4, title: "التحسين المستمر", description: "مراجعات الأداء والتحديثات المنتظمة" }
-        ]
-      },
-      insurance: {
-        title: "لمقدمي التأمين",
-        subtitle: "استفد من الذكاء الاصطناعي لتحسين معالجة المطالبات وتقييم المخاطر",
-        valueProps: [
-          { title: "معالجة أسرع للمطالبات", description: "تقليل وقت المعالجة من أيام إلى ساعات" },
-          { title: "كشف الاحتيال", description: "خوارزميات متقدمة لتحديد الأنماط المشبوهة" },
-          { title: "تقييم المخاطر", description: "النمذجة التنبؤية لقرارات الاكتتاب الأفضل" }
-        ],
-        workflow: [
-          { step: 1, title: "تقديم المطالبة", description: "تحليل المستندات والتحقق المدعوم بالذكاء الاصطناعي" },
-          { step: 2, title: "تقييم المخاطر", description: "التقييم والتصنيف الآلي" },
-          { step: 3, title: "دعم القرار", description: "توصيات قائمة على الأدلة للمعدلين" },
-          { step: 4, title: "التسوية", description: "معالجة المدفوعات المبسطة والتتبع" }
-        ]
-      },
-      charities: {
-        title: "للجمعيات الخيرية الصحية",
-        subtitle: "وسّع تأثيرك بحلول الرعاية الصحية المدعومة بالذكاء الاصطناعي",
-        valueProps: [
-          { title: "وسّع مهمتك", description: "وصل إلى المزيد من المستفيدين بالتحسين الذكي" },
-          { title: "التأثير القائم على البيانات", description: "قياس وإظهار فعالية منظمتك" },
-          { title: "كفاءة التكلفة", description: "تعظيم الموارد لرعاية المرضى والبرامج" }
-        ],
-        workflow: [
-          { step: 1, title: "تقييم الاحتياجات", description: "تحليل احتياجات المجتمع الصحية المدعوم بالذكاء الاصطناعي" },
-          { step: 2, title: "تصميم البرنامج", description: "تخطيط التدخلات المبني على البيانات والتحسين" },
-          { step: 3, title: "التنفيذ", description: "النشر القابل للتوسع عبر مواقع متعددة" },
-          { step: 4, title: "قياس التأثير", description: "تتبع النتائج الشامل والتقارير" }
-        ]
-      },
-      form: {
-        title: "تعاون معنا",
-        subtitle: "انضم إلى مستقبل تقنية الرعاية الصحية",
-        fields: {
-          name: "الاسم الكامل",
-          email: "عنوان البريد الإلكتروني",
-          organization: "اسم المنظمة",
-          role: "دورك",
-          phone: "رقم الهاتف",
-          message: "أخبرنا عن احتياجاتك",
-          file: "رفع المستندات (اختياري)"
-        },
-        submit: "إرسال طلب الشراكة",
-        success: "شكراً لاهتمامك! سنتواصل معك خلال 24 ساعة."
-      }
-    },
-    admin: {
-      title: "لوحة الإدارة",
-      leads: {
-        title: "شركاء محتملون",
-        search: "البحث في الشركاء...",
-        filters: {
-          status: "الحالة",
-          type: "النوع",
-          date: "النطاق الزمني"
-        },
-        table: {
-          name: "الاسم",
-          email: "البريد الإلكتروني",
-          organization: "المنظمة",
-          type: "النوع",
-          status: "الحالة",
-          date: "التاريخ",
-          actions: "الإجراءات"
-        }
-      },
-      auth: {
-        login: "تسجيل الدخول",
-        email: "عنوان البريد الإلكتروني",
-        magicLink: "إرسال رابط سحري",
-        googleOAuth: "المتابعة مع جوجل",
-        unauthorized: "ليس لديك إذن للوصول إلى هذه الصفحة"
-      }
     }
   }
-} as const;
-
-export function t(locale: Locale) {
-  return dictionary[locale];
-}
+};

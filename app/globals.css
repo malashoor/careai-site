@@ -2,17 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Page background + selection feel */
 :root {
-  --radius: 16px;
+  --bg-ghost: #fbfbfd;
+  --bg-shell: #f5f5f7;
+  --ink: #1d1d1f;
+  --border: #d2d2d7;
 }
 
-html[dir="rtl"] .ml-auto { margin-left: 0; margin-right: auto; }
-html[dir="rtl"] .mr-auto { margin-right: 0; margin-left: auto; }
+/* Light mode base */
+html { color-scheme: light; }
+body {
+  @apply bg-[var(--bg-ghost)] text-ink-800 antialiased;
+}
 
-/* Smooth gradients & subtle card styling */
+/* Apple-ish link */
+a {
+  @apply text-link no-underline hover:text-link-hover;
+}
+
+/* Reusable components */
+.btn {
+  @apply inline-flex items-center justify-center rounded-pill px-5 h-10 text-[15px] 
+         font-medium transition-colors duration-150;
+}
+.btn-primary {
+  @apply bg-brand-blue text-white hover:bg-brand-blueHover;
+}
+.btn-ghost {
+  @apply border border-[var(--border)] text-ink-900 hover:bg-ink-50;
+}
+.section {
+  @apply py-section lg:py-sectionLg;
+}
 .card {
-  @apply rounded-2xl shadow-lg bg-white/80 backdrop-blur border border-slate-200;
+  @apply rounded-xl2 bg-white shadow-card ring-1 ring-[var(--border)];
 }
-.container-p {
-  @apply px-4 sm:px-6 lg:px-8;
+.navbar {
+  @apply sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 
+         border-b border-[var(--border)];
+}
+
+/* Force readable foreground on light/dark surfaces */
+.ink-on-light { color: hsl(var(--ink-800)); }
+.ink-on-dark  { color: hsl(var(--ink-25));  }
+
+/* Also handy if containers set color accidentally */
+.ink-reset    { color: inherit; }
+
+/* dark card + guaranteed readable text/icons */
+.ink-on-dark { color: theme(colors.ink.25) }
+.ink-on-dark .icon, .ink-on-dark svg { color: theme(colors.ink.50) }
+
+/* light surfaces + readable icons */
+.ink-on-light { color: theme(colors.ink.800) }
+.ink-on-light .icon, .ink-on-light svg { color: theme(colors.ink.700) }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Anchor link scroll margin */
+[id] { 
+  scroll-margin-top: 6rem; 
 }

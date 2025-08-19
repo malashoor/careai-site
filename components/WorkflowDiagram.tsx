@@ -1,8 +1,7 @@
-import { type Locale } from "@/lib/i18n";
 import { dictionary } from "@/lib/dictionary";
 
 interface WorkflowDiagramProps {
-  locale: Locale;
+  locale: "en" | "ar";
   type: "doctors" | "hospitals" | "insurance" | "charities";
 }
 
@@ -12,31 +11,31 @@ export default function WorkflowDiagram({ locale, type }: WorkflowDiagramProps) 
 
   return (
     <section className="py-16 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-            How It Works
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            {locale === "ar" ? "كيف يعمل" : "How It Works"}
           </h2>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            {locale === "ar"
+              ? "عملية بسيطة ومباشرة لبدء استخدام كيرAI"
+              : "Simple, straightforward process to get started with CareAI"
+            }
+          </p>
         </div>
+
         <div className="grid md:grid-cols-4 gap-6">
           {partner.workflow.map((step, index) => (
             <div key={index} className="text-center">
               <div className="relative">
-                <div className="w-16 h-16 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {step.step}
+                <div className="w-16 h-16 bg-brand-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-xl">
+                  {index + 1}
                 </div>
                 {index < partner.workflow.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-brand-200 transform translate-x-1/2">
-                    <div className="w-2 h-2 bg-brand-600 rounded-full absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2"></div>
-                  </div>
+                  <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-brand-300 transform translate-x-1/2"></div>
                 )}
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {step.description}
-              </p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">{step}</h3>
             </div>
           ))}
         </div>

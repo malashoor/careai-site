@@ -1,76 +1,66 @@
+import type { Metadata } from "next";
 import "./globals.css";
-import { Inter, Noto_Kufi_Arabic } from "next/font/google";
-import { ReactNode } from "react";
+import CookieBanner from "@/components/CookieBanner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const kufi = Noto_Kufi_Arabic({ subsets: ["arabic"], variable: "--font-kufi" });
-
-export const metadata = {
-  title: "CareAI — Compassionate AI for Seniors",
-  description: "CareAI supports seniors with friendly conversations, medication reminders, and an SOS that alerts family and caregivers. Start your free trial today.",
-  keywords: "AI companion, senior care, medication reminders, health monitoring, emergency SOS, elderly assistance, caregiving technology",
-  authors: [{ name: "CareAI Team" }],
-  creator: "CareAI",
-  publisher: "CareAI",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+export const metadata: Metadata = {
+  title: "CareAI - AI-Powered Healthcare Solutions",
+  description: "AI companion for seniors with medication reminders, health check-ins, and SOS alerts. Transform patient care with intelligent automation and predictive analytics.",
+  icons: {
+    icon: "/icon.png",
   },
-  metadataBase: new URL("https://careai.app"),
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en": "/en",
-      "ar": "/ar",
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://careai.app",
-    siteName: "CareAI",
-    title: "CareAI — Compassionate AI for Seniors",
-    description: "CareAI supports seniors with friendly conversations, medication reminders, and an SOS that alerts family and caregivers.",
-    images: [
-      {
-        url: "/images/welcome_ai_hero.png",
-        width: 1200,
-        height: 630,
-        alt: "CareAI companion preview",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "CareAI — Compassionate AI for Seniors",
-    description: "CareAI supports seniors with friendly conversations, medication reminders, and an SOS that alerts family and caregivers.",
-    images: ["/images/welcome_ai_hero.png"],
-    creator: "@careai",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  manifest: "/site.webmanifest",
 };
 
-export const viewport = {
-  themeColor: "#1aaeff",
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html>
-      <body className={`${inter.variable} ${kufi.variable} font-sans min-h-screen bg-white text-slate-900`}>
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <head>
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "CareAI",
+              url: "https://www.careai.app",
+              logo: "https://www.careai.app/icon.png",
+              sameAs: ["https://www.linkedin.com/company/careai"]
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: "CareAI Companion",
+              brand: "CareAI",
+              description:
+                "AI companion for seniors with medication reminders, health check-ins, and SOS alerts.",
+              offers: { "@type": "Offer", priceCurrency: "USD", price: "9" }
+            }),
+          }}
+        />
+        
+        {/* Plausible Analytics */}
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
+          <script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+          />
+        )}
+        {/* hCaptcha */}
+        <script async defer src="https://js.hcaptcha.com/1/api.js" />
+      </head>
+      <body className="min-h-full font-sans bg-[var(--bg-ghost)] text-ink-800 antialiased">
         {children}
+        <CookieBanner />
       </body>
     </html>
   );

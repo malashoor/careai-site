@@ -7,17 +7,23 @@ export function getSupabase() {
   
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
-
+  
   if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('Missing Supabase environment variables');
     return null;
   }
-
-  supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
+  
+  supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true
+    }
+  });
   return supabaseClient;
 }
 
-// Types for our database tables
+// Types for our database tables (matching Flutter app)
 export interface Lead {
   id?: string;
   email: string;
@@ -80,22 +86,107 @@ export interface Profile {
 export async function checkAdminRole(userId: string): Promise<boolean> {
   const supabase = getSupabase();
   if (!supabase) return false;
-
-  const { data, error } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', userId)
-    .single();
-
-  if (error || !data) return false;
-  return data.role === 'admin';
+  
+  try {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', userId)
+      .single();
+    
+    if (error || !data) return false;
+    return data.role === 'admin';
+  } catch (error) {
+    console.error('Error checking admin role:', error);
+    return false;
+  }
 }
 
 export async function getCurrentUser() {
   const supabase = getSupabase();
   if (!supabase) return null;
+  
+  try {
+    const { data: { user }, error } = await supabase.auth.getUser();
+    if (error || !user) return null;
+    return user;
+  } catch (error) {
+    console.error('Error getting current user:', error);
+    return null;
+  }
+}
 
-  const { data: { user }, error } = await supabase.auth.getUser();
-  if (error || !user) return null;
-  return user;
+// Authentication functions matching Flutter app
+export async function signUpWithEmail(email: string, password: string, fullName?: string) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not initialized');
+  
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: 'https://careai.app/auth/callback'
+      }
+    });
+    
+    if (error) throw error;
+    
+    // Create pending profile (matching Flutter app)
+    if (data.user) {
+      await supabase.rpc('create_pending_profile', {
+        user_id: data.user.id,
+        user_full_name: fullName,
+        user_email: email
+      });
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Sign up error:', error);
+    throw error;
+  }
+}
+
+export async function signInWithEmail(email: string, password: string) {
+  const supabase = getSupabase();
+  if (!supabase) throw new Error('Supabase not initialized');
+  
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    
+    if (error) throw error;
+    
+    // Check if profile is active (matching Flutter app)
+    if (data.user) {
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('status')
+        .eq('id', data.user.id)
+        .single();
+      
+      if (profile?.status !== 'active') {
+        throw new Error('Please verify your email to continue.');
+      }
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('Sign in error:', error);
+    throw error;
+  }
+}
+
+export async function signOut() {
+  const supabase = getSupabase();
+  if (!supabase) return;
+  
+  try {
+    await supabase.auth.signOut();
+  } catch (error) {
+    console.error('Sign out error:', error);
+  }
 }
