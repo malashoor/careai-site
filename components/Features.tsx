@@ -66,24 +66,24 @@ export default function Features({ locale }: FeaturesProps) {
             <Link
               key={index}
               href={`/${locale}/features#${feature.slug}`}
-              className="group relative block rounded-2xl border border-ink-150 bg-white p-6 shadow-[0_6px_24px_rgba(16,24,40,.05)] transition-all duration-200 hover:shadow-[0_8px_32px_rgba(16,24,40,.08)] hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-blue ink-on-light cursor-pointer"
+              className="group relative block rounded-2xl border border-ink-150 bg-white p-6 shadow-[0_6px_24px_rgba(16,24,40,.05)] transition-all duration-200 hover:shadow-[0_8px_32px_rgba(16,24,40,.08)] hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-brand-blue ink-on-light cursor-pointer z-10"
               onClick={() => handleFeatureClick(feature.title)}
             >
               {/* Feature Icon */}
-              <div className="w-16 h-16 bg-ink-50 rounded-xl2 flex items-center justify-center mx-auto mb-4 group-hover:bg-ink-100 transition-colors">
+              <div className="w-16 h-16 bg-ink-50 rounded-xl2 flex items-center justify-center mx-auto mb-4 group-hover:bg-ink-100 transition-colors pointer-events-none">
                 {feature.icon}
               </div>
 
               {/* Feature Content */}
-              <h3 className="text-2xl font-semibold text-ink-900 mb-3">
+              <h3 className="text-2xl font-semibold text-ink-900 mb-3 pointer-events-none">
                 {feature.title}
               </h3>
-              <p className="text-ink-500 leading-relaxed">
+              <p className="text-ink-500 leading-relaxed pointer-events-none">
                 {feature.description}
               </p>
 
               {/* Hover indicator */}
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 <span className="text-link text-sm font-medium">
                   {locale === "ar" ? "تعرف على المزيد" : "Learn more"} →
                 </span>

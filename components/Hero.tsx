@@ -21,7 +21,7 @@ export default function Hero({ locale }: HeroProps) {
   const learnMoreHref = getLearnMoreHref(locale);
 
   return (
-    <section className="section bg-white">
+    <section className="relative section bg-white">
       <div className="mx-auto max-w-5xl px-4">
         <div className="text-center max-w-4xl mx-auto">
           {/* Main headline */}
@@ -34,8 +34,8 @@ export default function Hero({ locale }: HeroProps) {
             {i.hero.subtitle}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10">
+          {/* CTA Buttons - Ensure they're always on top */}
+          <div className="relative z-20 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <SmartLink
               href={getStartedHref}
               variant="button"
@@ -43,7 +43,7 @@ export default function Hero({ locale }: HeroProps) {
               onClick={() => handleCTAClick("primary")}
               {...(isAppStoreLink() && { target: "_blank", rel: "noopener noreferrer" })}
               {...(isDeepLink() && { "data-deeplink": "true" })}
-              className="cursor-pointer"
+              className="cursor-pointer relative z-10"
             >
               {i.hero.ctaPrimary}
             </SmartLink>
@@ -52,14 +52,14 @@ export default function Hero({ locale }: HeroProps) {
               variant="ghost"
               aria-label="Learn more about CareAI features"
               onClick={() => handleCTAClick("secondary")}
-              className="cursor-pointer"
+              className="cursor-pointer relative z-10"
             >
               {i.hero.ctaSecondary}
             </SmartLink>
           </div>
 
-          {/* Trust indicators */}
-          <div className="mt-12 pt-8 border-t border-ink-150 ink-on-light">
+          {/* Trust indicators - Ensure they don't interfere with CTAs */}
+          <div className="relative z-10 mt-12 pt-8 border-t border-ink-150 ink-on-light pointer-events-none">
             <p className="text-sm text-ink-400 mb-4">
               {locale === "ar" ? "مستخدم من قبل آلاف العائلات ومقدمي الرعاية" : "Trusted by thousands of families and caregivers"}
             </p>
