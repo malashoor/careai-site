@@ -1,63 +1,38 @@
-# Environment Variables
+# Environment Variables for CareAI
 
-## Required for CareAI Website (Same Supabase project as Flutter app)
+## Required Variables
 
-### Supabase (Production - wpzpmgvqcanvtjusxbeg)
+### Supabase Configuration
 ```bash
-# These MUST match the Flutter app's credentials
-NEXT_PUBLIC_SUPABASE_URL=https://wpzpmgvqcanvtjusxbeg.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwenBtZ3ZxY2FudnRqdXN4YmVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM2MjIxNjAsImV4cCI6MjA2OTE5ODE2MH0.IQdx9OdqUaeaS5SEX8eGORvJlfjT2ZuPtKRb0w0ZCaA
-
-# Server-side only (Netlify Functions)
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwenBtZ3ZxY2FudnRqdXN4YmVnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MzYyMjE2MCwiZXhwIjoyMDY5MTk4MTYwfQ.-82LoQfUTzHFYx6jkFKNTPTEbyWcg8sfOp4xWvUzuT0
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
-### Email Service (Resend)
+### Site Configuration
 ```bash
-RESEND_API_KEY=re_e3gE3zVG_7m4GhwrNvGzwrnXCxBgeKWCL
-```
-
-### hCaptcha (Forms protection)
-```bash
-# Public (client)
-NEXT_PUBLIC_HCAPTCHA_SITE_KEY=your_hcaptcha_site_key_here
-# Server (Netlify Functions)
-HCAPTCHA_SECRET=your_hcaptcha_secret_here
-```
-
-### Analytics
-```bash
+NEXT_PUBLIC_SITE_URL=https://www.careai.app
+NEXT_PUBLIC_CTA_DESTINATION=contact
 NEXT_PUBLIC_PLAUSIBLE_DOMAIN=careai.app
 ```
 
-## How to Set Up
+## Optional Variables
 
-### 1. Local Development (.env.local)
-Create `.env.local` in the project root with the above variables.
+### Email (Resend)
+```bash
+RESEND_API_KEY=your-resend-api-key-here
+CONTACT_TO_EMAIL=support@careai.app
+CONTACT_FROM_EMAIL=no-reply@careai.app
+```
 
-### 2. Netlify Environment Variables
-1. Go to Site settings → Environment variables
-2. Add all the variables above
-3. **Important**: `SUPABASE_SERVICE_ROLE_KEY` must be server-side only
-
-## Database Tables (Matching Flutter app)
-
-The website uses the same Supabase project as the Flutter app, so these tables should already exist:
-- `profiles` - User profiles with role-based access
-- `leads` - Onboarding form submissions  
-- `partner_leads` - Partner inquiry submissions
-- `integrations` - API integrations (for partner workflow)
-
-## Authentication Flow (Matching Flutter app)
-
-1. **Sign Up**: Creates user + pending profile (48h expiry)
-2. **Email Confirmation**: Activates profile via `activate_profile` RPC
-3. **Sign In**: Checks profile status before allowing access
-4. **Role Selection**: Users must select role (senior/family/professional)
+### Slack Notifications
+```bash
+SLACK_WEBHOOK_URL=your-slack-webhook-url-here
+```
 
 ## Security Notes
 
-- **NEVER** expose `SUPABASE_SERVICE_ROLE_KEY` in client-side code
-- The service role key bypasses RLS - only use in Netlify Functions
-- All admin operations are protected by `is_admin()` RPC checks
-- CSP updated to allow hCaptcha scripts/frames
+- **Never commit real API keys** to version control
+- **Use environment variables** in production
+- **Keep service role keys private** (server-side only)
+- **Public keys** (NEXT_PUBLIC_*) are safe for client-side use
