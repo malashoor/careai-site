@@ -1,6 +1,6 @@
 // lib/cta.ts
 type Dest = "onboarding" | "contact" | "partners" | "download-ios" | "download-android" | "deeplink";
-const DEST = (process.env.NEXT_PUBLIC_CTA_DESTINATION || "contact") as Dest;
+const DEST = (process.env.NEXT_PUBLIC_CTA_DESTINATION || "onboarding") as Dest;
 
 export function getGetStartedHref(locale: string) {
   switch (DEST) {
