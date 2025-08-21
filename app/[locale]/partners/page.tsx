@@ -5,123 +5,53 @@ import { trackEvents } from "@/lib/analytics";
 
 export default function PartnersPage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
   const i = dictionary[locale];
+  const isAR = locale === 'ar';
 
   return (
     <main className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        {/* Header */}
+        <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            {locale === "ar" ? "شركاؤنا" : "Our Partners"}
+            {isAR ? "شركاؤنا" : "Our Partners"}
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            {locale === "ar"
-              ? "نعمل مع منظمات الرعاية الصحية الرائدة لتحسين نتائج المرضى"
-              : "Working with leading healthcare organizations to improve patient outcomes"
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            {isAR
+              ? "نعمل مع منظمات الرعاية الصحية الرائدة لتحسين نتائج المرضى من خلال الذكاء الاصطناعي"
+              : "Working with leading healthcare organizations to improve patient outcomes through AI-powered solutions"
             }
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <a
-            href={`/${locale}/doctors`}
-            className="group block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-200"
-            onClick={() => trackEvents.pageView('doctors', locale)}
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-3xl">👨‍⚕️</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {locale === "ar" ? "الأطباء" : "Doctors"}
-              </h3>
-              <p className="text-slate-600 text-sm">
-                {locale === "ar"
-                  ? "تحسين الالتزام بالأدوية والرعاية الوقائية"
-                  : "Improve medication adherence and preventive care"
-                }
-              </p>
+        {/* Partnership CTA */}
+        <section className="text-center">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-12 border border-blue-200">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              {isAR ? "انضم إلينا كشريك" : "Partner With Us"}
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
+              {isAR
+                ? "نبحث بنشاط عن شركاء تجريبيين: الأطباء، مجتمعات المسنين، شركات التأمين، وأنظمة الرعاية الصحية. إذا كنت مهتماً بتصميم الميزات أو تقييم النتائج، نود التحدث معك."
+                : "We're actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you're interested in co-designing features or evaluating outcomes, we'd love to talk."
+              }
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={`/${locale}/contact?inquiry=partnership`}
+                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-2xl font-semibold hover:bg-blue-700 transition-colors"
+                onClick={() => trackEvents.ctaPartnerInquiry('general', locale)}
+              >
+                {isAR ? "ابدأ المحادثة" : "Start the Conversation"}
+              </a>
+              <a
+                href={`/${locale}/contact`}
+                className="inline-block px-8 py-4 bg-white text-slate-900 rounded-2xl font-semibold border-2 border-slate-300 hover:bg-slate-50 transition-colors"
+              >
+                {isAR ? "تواصل معنا" : "Contact Us"}
+              </a>
             </div>
-          </a>
-
-          <a
-            href={`/${locale}/hospitals`}
-            className="group block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-200"
-            onClick={() => trackEvents.pageView('hospitals', locale)}
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-3xl">🏥</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {locale === "ar" ? "المستشفيات" : "Hospitals"}
-              </h3>
-              <p className="text-slate-600 text-sm">
-                {locale === "ar"
-                  ? "تقليل إعادة القبول وتحسين رعاية ما بعد الخروج"
-                  : "Reduce readmissions and improve post-discharge care"
-                }
-              </p>
-            </div>
-          </a>
-
-          <a
-            href={`/${locale}/insurance`}
-            className="group block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-200"
-            onClick={() => trackEvents.pageView('insurance', locale)}
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-3xl">🛡️</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {locale === "ar" ? "التأمين" : "Insurance"}
-              </h3>
-              <p className="text-slate-600 text-sm">
-                {locale === "ar"
-                  ? "تقليل المطالبات القابلة للتجنب من خلال الالتزام"
-                  : "Reduce avoidable claims through better adherence"
-                }
-              </p>
-            </div>
-          </a>
-
-          <a
-            href={`/${locale}/charities`}
-            className="group block p-6 bg-white rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-200"
-            onClick={() => trackEvents.pageView('charities', locale)}
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">
-                {locale === "ar" ? "الجمعيات الخيرية" : "Charities"}
-              </h3>
-              <p className="text-slate-600 text-sm">
-                {locale === "ar"
-                  ? "مقاعد مدعومة ودعم متعدد اللغات"
-                  : "Sponsored seats and multilingual support"
-                }
-              </p>
-            </div>
-          </a>
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-slate-600 mb-6">
-            {locale === "ar"
-              ? "هل أنت مهتم بالشراكة معنا؟"
-              : "Interested in partnering with us?"
-            }
-          </p>
-          <a
-            href={`/${locale}/doctors`}
-            className="inline-block px-8 py-4 bg-brand-600 text-white rounded-2xl font-semibold hover:bg-brand-700 transition-colors"
-            onClick={() => trackEvents.ctaPartnerInquiry('general', locale)}
-          >
-            {locale === "ar" ? "ابدأ المحادثة" : "Start the Conversation"}
-          </a>
-        </div>
+          </div>
+        </section>
       </div>
     </main>
   );

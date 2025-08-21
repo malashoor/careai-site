@@ -1,16 +1,18 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { type Locale, locales, defaultLocale } from "@/lib/i18n";
 
 export function useLocale(): Locale {
-  const params = useParams();
-  const locale = params?.locale as Locale;
+  const pathname = usePathname();
   
-  // Fallback to default if locale is invalid
-  if (!locale || !locales.includes(locale)) {
-    return defaultLocale;
+  // Check for all supported locales
+  for (const locale of locales) {
+    if (pathname.startsWith(`/${locale}`)) {
+      return locale;
+    }
   }
   
-  return locale;
+  // Default to English for root path and other paths
+  return 'en';
 }

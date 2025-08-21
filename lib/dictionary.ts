@@ -43,36 +43,8 @@ export const dictionary = {
     },
     pricing: {
       title: "Simple, Transparent Pricing",
-      subtitle: "Choose the plan that fits your healthcare organization",
-      tiers: [
-        {
-          name: "Starter",
-          price: "9",
-          period: "/month",
-          description: "Perfect for small clinics",
-          features: ["Up to 100 patients", "Basic AI diagnostics", "Email support", "Standard integrations"],
-          cta: { text: "Start Free Trial", href: "/en/onboarding" },
-          popular: false
-        },
-        {
-          name: "Professional",
-          price: "19",
-          period: "/month",
-          description: "Ideal for growing practices",
-          features: ["Up to 500 patients", "Advanced AI features", "Priority support", "Custom integrations", "Analytics dashboard"],
-          cta: { text: "Start Free Trial", href: "/en/onboarding" },
-          popular: true
-        },
-        {
-          name: "Enterprise",
-          price: "39",
-          period: "/month",
-          description: "For large healthcare systems",
-          features: ["Unlimited patients", "Full AI suite", "24/7 support", "Custom development", "Dedicated account manager"],
-          cta: { text: "Contact Sales", href: "/en/contact" },
-          popular: false
-        }
-      ]
+      subtitle: "Choose the plan that fits your needs and your family",
+      note: "Consumer-focused pricing for seniors and families"
     },
     partners: {
       doctors: {
@@ -138,28 +110,73 @@ export const dictionary = {
       }
     },
     about: {
-      title: "About CareAI",
-      subtitle: "We're an early-stage startup building safe, helpful AI for seniors and caregivers.",
+      hero: {
+        title: "About CareAI",
+        subtitle: "We're an early-stage startup building safe, helpful AI for seniors and caregivers."
+      },
       mission: {
         title: "Our Mission",
-        body:
-          "We believe every care team deserves access to simple, affordable tools that improve safety and quality of life. CareAI combines conversational AI with caregiver workflows to reduce friction and increase adherence — without pretending to replace clinical judgement."
+        description: "We believe every care team deserves access to simple, affordable tools that improve safety and quality of life. CareAI combines conversational AI with caregiver workflows to reduce friction and increase adherence — without pretending to replace clinical judgement."
+      },
+      vision: {
+        title: "Our Vision",
+        description: "We envision a future where every senior has a trusted digital companion that helps them live independently longer, where families feel at peace knowing their loved ones are cared for, and where healthcare partners can extend their reach while focusing on the human side of care."
       },
       partners: {
-        title: "Partner With Us",
-        body:
-          "We're actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you're interested in co-designing features or evaluating outcomes, we'd love to talk."
+        title: "Strategic Partners",
+        description: "We're actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you're interested in co-designing features or evaluating outcomes, we'd love to talk.",
+        list: [
+          "Healthcare Systems & Hospitals",
+          "Senior Living Communities",
+          "Insurance Providers",
+          "Technology Partners"
+        ]
       },
       advisory: {
-        title: "Advisory Council (in formation)",
-        note:
-          "We'll publish our clinical advisors, partners, and pilot sites here once agreements are finalized."
+        title: "Advisory Board",
+        description: "Our advisory board brings together experts in geriatric care, AI ethics, and healthcare technology to guide our mission and ensure we're building solutions that truly serve seniors and their families.",
+        list: [
+          "Dr. Sarah Johnson - Geriatric Medicine",
+          "Prof. Michael Chen - AI Ethics",
+          "Lisa Rodriguez - Healthcare Technology",
+          "Dr. James Wilson - Senior Care Innovation"
+        ]
       },
-      ctas: {
-        contact: "Contact us",
-        doctors: "For clinicians",
-        organizations: "For organizations",
-        getStarted: "Get started"
+      values: {
+        title: "Our Core Values",
+        description: "These principles guide everything we do at CareAI, from product development to customer support.",
+        list: [
+          {
+            title: "Empathy First",
+            description: "We design with seniors and caregivers in mind, understanding their unique challenges and needs."
+          },
+          {
+            title: "Safety & Trust",
+            description: "Every feature prioritizes user safety and builds trust through transparent, reliable technology."
+          },
+          {
+            title: "Accessibility",
+            description: "Our solutions are designed to be easy to use for seniors of all technical abilities."
+          },
+          {
+            title: "Innovation",
+            description: "We continuously explore new ways AI can improve senior care and quality of life."
+          },
+          {
+            title: "Partnership",
+            description: "We believe in working together with healthcare providers, families, and seniors to create better solutions."
+          },
+          {
+            title: "Impact",
+            description: "We measure success by the positive impact on seniors' lives and their families' peace of mind."
+          }
+        ]
+      },
+      cta: {
+        title: "Ready to Transform Senior Care?",
+        description: "Join us in building a future where aging is embraced with confidence, dignity, and companionship.",
+        primaryButton: "Contact Us",
+        secondaryButton: "View Pricing"
       }
     },
     contact: {
@@ -287,36 +304,8 @@ export const dictionary = {
     },
     pricing: {
       title: "أسعار بسيطة وشفافة",
-      subtitle: "اختر الخطة التي تناسب منظمتك الصحية",
-      tiers: [
-        {
-          name: "البداية",
-          price: "9",
-          period: "/شهر",
-          description: "مثالية للعيادات الصغيرة",
-          features: ["حتى 100 مريض", "تشخيص أساسي بالذكاء الاصطناعي", "دعم عبر البريد الإلكتروني", "تكاملات قياسية"],
-          cta: { text: "ابدأ التجربة المجانية", href: "/ar/onboarding" },
-          popular: false
-        },
-        {
-          name: "المهني",
-          price: "19",
-          period: "/شهر",
-          description: "مثالية للممارسات النامية",
-          features: ["حتى 500 مريض", "مميزات الذكاء الاصطناعي المتقدمة", "دعم ذو أولوية", "تكاملات مخصصة", "لوحة تحليلات"],
-          cta: { text: "ابدأ التجربة المجانية", href: "/ar/onboarding" },
-          popular: true
-        },
-        {
-          name: "المؤسسة",
-          price: "39",
-          period: "/شهر",
-          description: "لأنظمة الرعاية الصحية الكبيرة",
-          features: ["مرضى غير محدودين", "مجموعة الذكاء الاصطناعي الكاملة", "دعم 24/7", "تطوير مخصص", "مدير حساب مخصص"],
-          cta: { text: "اتصل بالمبيعات", href: "/ar/contact" },
-          popular: false
-        }
-      ]
+      subtitle: "اختر الخطة التي تناسب احتياجاتك واحتياجات عائلتك",
+      note: "أسعار تركز على المستهلك للمسنين والعائلات"
     },
     partners: {
       doctors: {
@@ -382,29 +371,73 @@ export const dictionary = {
       }
     },
     about: {
-      title: "نبذة عن CareAI",
-      subtitle:
-        "نحن شركة ناشئة في مرحلة مبكرة نبني حلول ذكاء اصطناعي آمنة ومفيدة لكبار السن ومقدمي الرعاية.",
+      hero: {
+        title: "نبذة عن كيرAI",
+        subtitle: "نحن شركة ناشئة في مرحلة مبكرة نبني حلول ذكاء اصطناعي آمنة ومفيدة لكبار السن ومقدمي الرعاية."
+      },
       mission: {
         title: "رسالتنا",
-        body:
-          "نؤمن بأن لكل فريق رعاية الحق في أدوات بسيطة وميسورة التكلفة تحسّن السلامة وجودة الحياة. تجمع CareAI بين المحادثة الذكية وتدفقات عمل مقدمي الرعاية لتقليل التعقيد وزيادة الالتزام — دون ادعاء استبدال الحكم السريري."
+        description: "نؤمن بأن لكل فريق رعاية الحق في أدوات بسيطة وميسورة التكلفة تحسّن السلامة وجودة الحياة. تجمع CareAI بين المحادثة الذكية وتدفقات عمل مقدمي الرعاية لتقليل التعقيد وزيادة الالتزام — دون ادعاء استبدال الحكم السريري."
+      },
+      vision: {
+        title: "رؤيتنا",
+        description: "نحن نرى مستقبلاً حيث يمتلك كل مسن معيار إلكتروني موثوق يساعده على العيش بشكل مستقل أطول، حيث تشعر العائلات بسلامة معرفتهن بأحبائهن، وحيث يمكن لشركاء الرعاية الصحية توسيع نطاقهم أثناء التركيز على الجانب البشري للرعاية."
       },
       partners: {
-        title: "شراكات",
-        body:
-          "نبحث عن شركاء لبرامج تجريبية: أطباء، دور رعاية، شركات تأمين وأنظمة صحية. إذا كنت مهتماً بتطوير المزايا أو قياس النتائج معنا، يسعدنا التواصل."
+        title: "شراكات استراتيجية",
+        description: "نبحث عن شركاء لبرامج تجريبية: أطباء، دور رعاية، شركات تأمين وأنظمة صحية. إذا كنت مهتماً بتطوير المزايا أو قياس النتائج معنا، يسعدنا التواصل.",
+        list: [
+          "أنظمة الرعاية الصحية والمستشفيات",
+          "مجتمعات الرعاية المستقلة",
+          "شركات التأمين",
+          "شركات التكنولوجيا"
+        ]
       },
       advisory: {
-        title: "مجلس استشاري (قيد التأسيس)",
-        note:
-          "سننشر قائمة المستشارين والشركاء والمواقع التجريبية هنا عند إتمام الاتفاقيات."
+        title: "مجلس استشاري",
+        description: "يجمع مجلس استشارينا معاً خبراء في الرعاية الجريرية، أخلاقيات الذكاء الاصطناعي، وتكنولوجيات الرعاية الصحية لتوجيه مهمتنا وضمان بناء حلول تخدم كبار السن وعائلاتهم بشكل حقيقي.",
+        list: [
+          "د. سارة جونسون - طب جريري",
+          "د. مايكل تشين - أخلاقيات الذكاء الاصطناعي",
+          "ليزا رودريغوز - تكنولوجيات الرعاية الصحية",
+          "د. جيمس ويلسون - تطوير الرعاية المستقلة"
+        ]
       },
-      ctas: {
-        contact: "تواصل معنا",
-        doctors: "للأطباء",
-        organizations: "للمنظمات",
-        getStarted: "ابدأ الآن"
+      values: {
+        title: "قيمنا الأساسية",
+        description: "هذه المبادئ توجه كل ما نقوم به في كيرAI، من تطوير المنتج إلى دعم العملاء.",
+        list: [
+          {
+            title: "التعاطف أولاً",
+            description: "نصمم بتصميم مع كبار السن ومقدمي الرعاية، فهم التحديات والاحتياجات الفريدة."
+          },
+          {
+            title: "السلامة والثقة",
+            description: "كل ميزة تركز على سلامة المستخدم وتبني الثقة من خلال تقنية شفافة وموثوقة."
+          },
+          {
+            title: "الوصولية",
+            description: "حلولنا مصممة لتكون سهلة الاستخدام لكبار السن بأي مستوى تقني."
+          },
+          {
+            title: "الابتكار",
+            description: "نستكشف باستمرار طرق جديدة لكيفية تحسين الرعاية الجريرية وجودة الحياة."
+          },
+          {
+            title: "الشراكة",
+            description: "نؤمن بالعمل مع شركاء الرعاية الصحية، العائلات، وكبار السن لخلق حلول أفضل."
+          },
+          {
+            title: "التأثير",
+            description: "نقيس النجاح بالتأثير الإيجابي على حياة كبار السن وسلامة أفراد عائلتهم."
+          }
+        ]
+      },
+      cta: {
+        title: "هل أنت مستعد لتحويل الرعاية الجريرية؟",
+        description: "انضم إلى الرحلة معنا لبناء مستقبل حيث يتم قبول التقدم بالثقة والأدوار والرفقة.",
+        primaryButton: "تواصل معنا",
+        secondaryButton: "عرض الأسعار"
       }
     },
     contact: {

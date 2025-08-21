@@ -1,4 +1,4 @@
-import { locales, type Locale, isRTL } from "@/lib/i18n";
+import { locales, type Locale, isRTL, defaultLocale } from "@/lib/i18n";
 import { ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,14 +12,29 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: { params: { locale: Locale } }) {
-  const i = dictionary[params.locale];
+  // Validate locale parameter and fallback to default
+  const locale = params?.locale && locales.includes(params.locale as Locale) 
+    ? params.locale as Locale 
+    : defaultLocale;
+  
+  const i = dictionary[locale];
+  
+  // Ensure we have valid dictionary data
+  if (!i) {
+    console.error(`Invalid locale or missing dictionary for: ${locale}`);
+    return {
+      title: "CareAI - AI-Powered Healthcare Solutions",
+      description: "AI companion for seniors with medication reminders, health check-ins, and SOS alerts.",
+    };
+  }
+  
   return { 
     title: i.metaTitle,
     description: i.metaDescription,
     openGraph: {
       title: i.metaTitle,
       description: i.metaDescription,
-      url: `https://www.careai.app/${params.locale}`,
+      url: `https://www.careai.app/${locale}`,
       siteName: 'CareAI',
       images: [
         {
@@ -29,7 +44,7 @@ export function generateMetadata({ params }: { params: { locale: Locale } }) {
           alt: 'CareAI - AI Companion for Seniors',
         },
       ],
-      locale: params.locale,
+      locale: locale,
       type: 'website',
     },
     twitter: {
@@ -42,7 +57,11 @@ export function generateMetadata({ params }: { params: { locale: Locale } }) {
 }
 
 export default function LocaleLayout({ children, params }: { children: ReactNode; params: { locale: Locale } }) {
-  const { locale } = params;
+  // Validate locale parameter and fallback to default
+  const locale = params?.locale && locales.includes(params.locale as Locale) 
+    ? params.locale as Locale 
+    : defaultLocale;
+  
   const dir = isRTL(locale) ? "rtl" : "ltr";
   
   return (

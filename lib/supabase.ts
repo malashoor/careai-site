@@ -117,7 +117,15 @@ export async function getCurrentUser() {
 }
 
 // Authentication functions matching Flutter app
-export async function signUpWithEmail(email: string, password: string, fullName?: string) {
+export async function signUpWithEmail(email: string, password: string, fullName?: string, additionalData?: {
+  phone?: string;
+  age?: number;
+  gender?: string;
+  birthday?: string;
+  livingSituation?: string;
+  healthConcern?: string;
+  plan?: string;
+}) {
   const supabase = getSupabase();
   if (!supabase) throw new Error('Supabase not initialized');
   
@@ -126,18 +134,27 @@ export async function signUpWithEmail(email: string, password: string, fullName?
       email,
       password,
       options: {
-        emailRedirectTo: 'https://careai.app/auth/callback'
+        emailRedirectTo: process.env.NODE_ENV === 'production' 
+          ? 'https://careai.app/en/auth/callback'
+          : 'http://localhost:3000/en/auth/callback'
       }
     });
     
     if (error) throw error;
     
-    // Create pending profile (matching Flutter app)
+    // Create pending profile with all enhanced fields
     if (data.user) {
       await supabase.rpc('create_pending_profile', {
         user_id: data.user.id,
         user_full_name: fullName,
-        user_email: email
+        user_email: email,
+        user_phone: additionalData?.phone,
+        user_age: additionalData?.age,
+        user_gender: additionalData?.gender,
+        user_birthday: additionalData?.birthday,
+        user_living_situation: additionalData?.livingSituation,
+        user_health_concern: additionalData?.healthConcern,
+        user_plan: additionalData?.plan
       });
     }
     
@@ -168,8 +185,10 @@ export async function signInWithEmail(email: string, password: string) {
         .eq('id', data.user.id)
         .single();
       
-      if (profile?.status !== 'active') {
-        throw new Error('Please verify your email to continue.');
+      if (profile?.status === 'pending') {
+        throw new Error('Please check your email and click the verification link to activate your account.');
+      } else if (profile?.status !== 'active') {
+        throw new Error('Your account is not active. Please contact support.');
       }
     }
     

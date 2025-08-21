@@ -5,14 +5,30 @@ import Features from "@/components/Features";
 import Pricing from "@/components/Pricing";
 import { dictionary } from "@/lib/dictionary";
 import { trackEvents } from "@/lib/analytics";
+import { locales, defaultLocale } from "@/lib/i18n";
 
 export default function HomePage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
-  const i = dictionary[locale];
+  // Validate locale parameter and fallback to default
+  const validLocale = locale && locales.includes(locale as any) ? locale : defaultLocale;
+  const i = dictionary[validLocale];
+
+  // Ensure we have valid dictionary data
+  if (!i) {
+    console.error(`Invalid locale or missing dictionary for: ${validLocale}`);
+    return (
+      <main>
+        <div className="text-center py-16">
+          <h1 className="text-2xl font-bold text-red-600">Configuration Error</h1>
+          <p className="text-gray-600 mt-2">Please refresh the page or contact support.</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main>
-      <Hero locale={locale} />
-      <Features locale={locale} />
+      <Hero locale={validLocale} />
+      <Features locale={validLocale} />
       
       {/* How It Works Section */}
       <section className="py-16 bg-white">
@@ -45,30 +61,30 @@ export default function HomePage({ params: { locale } }: { params: { locale: "en
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-4">
             <a 
-              href={`/${locale}/onboarding`} 
+              href="/app" 
               className="card p-6 hover:shadow-xl transition"
-              onClick={() => trackEvents.ctaGetStarted(locale)}
+              onClick={() => trackEvents.ctaGetStarted(validLocale)}
             >
               <h3 className="text-xl font-bold">
-                {locale === "ar" ? "ابدأ كعائلة" : "Start as a Family"}
+                {validLocale === "ar" ? "ابدأ كعائلة" : "Start as a Family"}
               </h3>
               <p className="mt-2 text-slate-600">
-                {locale === "ar" 
+                {validLocale === "ar" 
                   ? "ادعو أحد الأحباء، اضبط التذكيرات، وفعّل تنبيهات SOS."
                   : "Invite a loved one, set reminders, and enable SOS alerts."
                 }
               </p>
             </a>
             <a 
-              href={`/${locale}/doctors`} 
+              href={`/${validLocale}/doctors`} 
               className="card p-6 hover:shadow-xl transition"
-              onClick={() => trackEvents.ctaPartnerInquiry('doctors', locale)}
+              onClick={() => trackEvents.ctaPartnerInquiry('doctors', validLocale)}
             >
               <h3 className="text-xl font-bold">
-                {locale === "ar" ? "شركاء الرعاية الصحية" : "Healthcare Partners"}
+                {validLocale === "ar" ? "شركاء الرعاية الصحية" : "Healthcare Partners"}
               </h3>
               <p className="mt-2 text-slate-600">
-                {locale === "ar"
+                {validLocale === "ar"
                   ? "العيادات والمستشفيات: حسّن الالتزام والسلامة."
                   : "Clinics & hospitals: improve adherence and safety."
                 }
@@ -78,7 +94,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: "en
         </div>
       </section>
 
-      <Pricing locale={locale} />
+      <Pricing locale={validLocale} />
     </main>
   );
 }

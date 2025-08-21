@@ -22,10 +22,10 @@ export default function Footer({ locale }: FooterProps) {
               }
             </p>
             <div className="flex space-x-4 rtl:space-x-reverse">
-              <Link href={`/${locale}/onboarding`} className="btn btn-primary">
+              <Link href="/app" className="btn btn-primary">
                 {locale === "ar" ? "ابدأ الآن" : "Get Started"}
               </Link>
-              <Link href={`/${locale}/contact`} className="btn btn-ghost">
+              <Link href={`/${locale}/contact`} className="btn btn-primary">
                 {locale === "ar" ? "تواصل معنا" : "Contact Us"}
               </Link>
             </div>
@@ -43,16 +43,6 @@ export default function Footer({ locale }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/pricing`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "الأسعار" : "Pricing"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/onboarding`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "البدء" : "Onboarding"}
-                </Link>
-              </li>
-              <li>
                 <Link href={`/${locale}/about`} className="text-slate-300 hover:text-white transition-colors">
                   {locale === "ar" ? "حول" : "About"}
                 </Link>
@@ -62,28 +52,11 @@ export default function Footer({ locale }: FooterProps) {
 
           {/* Partners */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">
-              {locale === "ar" ? "الشركاء" : "Partners"}
-            </h4>
+            <h4 className="text-lg font-semibold mb-4">Partners</h4>
             <ul className="space-y-2">
               <li>
-                <Link href={`/${locale}/doctors`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "الأطباء" : "Doctors"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/hospitals`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "المستشفيات" : "Hospitals"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/insurance`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "التأمين" : "Insurance"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/charities`} className="text-slate-300 hover:text-white transition-colors">
-                  {locale === "ar" ? "الجمعيات الخيرية" : "Charities"}
+                <Link href={`/${locale}/partners`} className="text-slate-300 hover:text-white transition-colors">
+                  {locale === "ar" ? "جميع الشركاء" : "All Partners"}
                 </Link>
               </li>
             </ul>
