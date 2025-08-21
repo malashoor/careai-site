@@ -4,6 +4,92 @@ import { useLocale } from "@/lib/hooks/useLocale";
 
 export default function Navbar() {
   const locale = useLocale();
+  
+  // Localized text for all languages
+  const localizedText = {
+    en: {
+      features: "Features",
+      partners: "Partners", 
+      about: "About",
+      contact: "Contact",
+      getStarted: "Get Started",
+      languageToggle: "العربية"
+    },
+    ar: {
+      features: "المميزات",
+      partners: "الشركاء",
+      about: "عنّا", 
+      contact: "اتصل بنا",
+      getStarted: "ابدأ الآن",
+      languageToggle: "English"
+    },
+    es: {
+      features: "Características",
+      partners: "Socios",
+      about: "Acerca de",
+      contact: "Contacto", 
+      getStarted: "Comenzar",
+      languageToggle: "English"
+    },
+    fr: {
+      features: "Fonctionnalités",
+      partners: "Partenaires",
+      about: "À propos",
+      contact: "Contact",
+      getStarted: "Commencer", 
+      languageToggle: "English"
+    },
+    de: {
+      features: "Funktionen",
+      partners: "Partner",
+      about: "Über uns",
+      contact: "Kontakt",
+      getStarted: "Loslegen",
+      languageToggle: "English"
+    },
+    zh: {
+      features: "功能",
+      partners: "合作伙伴",
+      about: "关于我们",
+      contact: "联系我们",
+      getStarted: "开始使用",
+      languageToggle: "English"
+    },
+    ja: {
+      features: "機能",
+      partners: "パートナー",
+      about: "会社概要",
+      contact: "お問い合わせ",
+      getStarted: "始める",
+      languageToggle: "English"
+    },
+    ko: {
+      features: "기능",
+      partners: "파트너",
+      about: "회사 소개",
+      contact: "연락처",
+      getStarted: "시작하기",
+      languageToggle: "English"
+    },
+    hi: {
+      features: "सुविधाएं",
+      partners: "साझेदार",
+      about: "हमारे बारे में",
+      contact: "संपर्क करें",
+      getStarted: "शुरू करें",
+      languageToggle: "English"
+    },
+    pt: {
+      features: "Recursos",
+      partners: "Parceiros",
+      about: "Sobre",
+      contact: "Contato",
+      getStarted: "Começar",
+      languageToggle: "English"
+    }
+  };
+
+  const t = localizedText[locale] || localizedText.en;
   const isAr = locale === "ar";
 
   return (
@@ -11,7 +97,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href={isAr ? "/ar" : "/"} className="flex-shrink-0 flex items-center space-x-2">
+            <Link href={locale === 'en' ? "/" : `/${locale}`} className="flex-shrink-0 flex items-center space-x-2">
               <img 
                 src="/icons/app_icon.png" 
                 alt="CareAI Logo" 
@@ -22,27 +108,27 @@ export default function Navbar() {
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link href={isAr ? "/ar#features" : "/#features"} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
-              {isAr ? "المميزات" : "Features"}
+            <Link href={locale === 'en' ? "/#features" : `/${locale}#features`} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
+              {t.features}
             </Link>
-            <Link href={isAr ? "/ar/partners" : "/partners"} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
-              {isAr ? "الشركاء" : "Partners"}
+            <Link href={locale === 'en' ? "/partners" : `/${locale}/partners`} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
+              {t.partners}
             </Link>
-            <Link href={isAr ? "/ar/about" : "/about"} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
-              {isAr ? "عنّا" : "About"}
+            <Link href={locale === 'en' ? "/about" : `/${locale}/about`} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
+              {t.about}
             </Link>
-            <Link href={isAr ? "/ar/contact" : "/contact"} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
-              {isAr ? "اتصل بنا" : "Contact"}
+            <Link href={locale === 'en' ? "/contact" : `/${locale}/contact`} className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium">
+              {t.contact}
             </Link>
           </div>
 
           <div className="flex items-center space-x-4">
             <Link href="/app" className="bg-brand-600 text-white px-4 py-2 rounded-lg hover:bg-brand-700 transition-colors">
-              {isAr ? "ابدأ الآن" : "Get Started"}
+              {t.getStarted}
             </Link>
             <div className="relative group">
               <button className="text-gray-700 hover:text-brand-600 px-3 py-2 rounded-md text-sm font-medium flex items-center gap-1">
-                {isAr ? "English" : "العربية"}
+                {t.languageToggle}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
