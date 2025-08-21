@@ -10,9 +10,7 @@ const nextConfig = {
     // remotePatterns: [],
   },
   // Exclude Flutter directory from build to prevent env var conflicts
-  experimental: {
-    excludeDefaultMomentLocales: true,
-  },
+  // Removed invalid experimental option for Next.js 14.2.31
   // Static export for Netlify deployment
   output: 'export',
   trailingSlash: true,
