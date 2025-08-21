@@ -13,9 +13,9 @@ const nextConfig = {
   experimental: {
     excludeDefaultMomentLocales: true,
   },
-  // Temporarily commented out to allow API routes during development
-  // output: 'export',
-  // trailingSlash: true,
+  // Static export for Netlify deployment
+  output: 'export',
+  trailingSlash: true,
 };
 
 export default nextConfig;
