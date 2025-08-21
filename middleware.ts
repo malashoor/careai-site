@@ -15,16 +15,16 @@ export function middleware(req: NextRequest) {
   for (const L of locales) {
     for (const h of hidden) {
       if (pathname === `/${L}/${h}` || pathname.startsWith(`/${L}/${h}/`)) {
-        return NextResponse.rewrite(new URL('/404', req.url));
+        return new NextResponse(null, { status: 404 });
       }
     }
   }
 
   // Root hidden pages (non-localized) → 404
   for (const h of hidden) {
-    if (pathname === `/${h}` || pathname.startsWith(`/${h}/`)) {
-      return NextResponse.rewrite(new URL('/404', req.url));
-    }
+          if (pathname === `/${h}` || pathname.startsWith(`/${h}/`)) {
+        return new NextResponse(null, { status: 404 });
+      }
   }
 
   return NextResponse.next();
