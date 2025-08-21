@@ -8,10 +8,32 @@
   X-Robots-Tag: index, follow
   Cache-Control: public, max-age=86400
 
-/*
+/* 
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://js.hcaptcha.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://*.supabase.co https://plausible.io https://hcaptcha.com https://*.hcaptcha.com; frame-src https://*.hcaptcha.com; font-src 'self' data:
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https:;
+  Cache-Control: public, max-age=600
+
+/_next/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Flutter SPA under /app
+/app/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/app/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/app/main.dart.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/app/flutter.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/app/assets/*
+  Cache-Control: public, max-age=31536000, immutable

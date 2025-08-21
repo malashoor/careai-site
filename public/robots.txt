@@ -1,4 +1,38 @@
 User-agent: *
 Allow: /
 
+# Disallow hidden pages for all locales
+Disallow: /en/pricing
+Disallow: /ar/pricing
+Disallow: /es/pricing
+Disallow: /fr/pricing
+Disallow: /de/pricing
+Disallow: /zh/pricing
+Disallow: /ja/pricing
+Disallow: /ko/pricing
+Disallow: /hi/pricing
+Disallow: /pt/pricing
+
+Disallow: /en/onboarding
+Disallow: /ar/onboarding
+Disallow: /es/onboarding
+Disallow: /fr/onboarding
+Disallow: /de/onboarding
+Disallow: /zh/onboarding
+Disallow: /ja/onboarding
+Disallow: /ko/onboarding
+Disallow: /hi/onboarding
+Disallow: /pt/onboarding
+
+Disallow: /en/sign-in
+Disallow: /ar/sign-in
+Disallow: /es/sign-in
+Disallow: /fr/sign-in
+Disallow: /de/sign-in
+Disallow: /zh/sign-in
+Disallow: /ja/sign-in
+Disallow: /ko/sign-in
+Disallow: /hi/sign-in
+Disallow: /pt/sign-in
+
 Sitemap: https://www.careai.app/sitemap.xml

@@ -1,36 +1,32 @@
-import type { MetadataRoute } from "next";
+// app/sitemap.ts
+import type { MetadataRoute } from 'next';
+
+const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.careai.app';
+const locales = ['en','ar','es','fr','de','zh','ja','ko','hi','pt'] as const;
+const publicPaths = ['','about','partners','contact'] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.careai.app";
-  
-  // Main pages
-  const mainUrls: MetadataRoute.Sitemap = [
-    { url: `${base}/`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/en`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${base}/ar`, changeFrequency: "weekly", priority: 0.8 },
-  ];
+  const entries: MetadataRoute.Sitemap = [];
 
-  // Legal pages
-  const legalUrls: MetadataRoute.Sitemap = [
-    "/en/legal/privacy", "/en/legal/terms",
-    "/ar/legal/privacy", "/ar/legal/terms",
-  ].map((p) => ({ 
-    url: `${base}${p}`, 
-    changeFrequency: "monthly" as const, 
-    priority: 0.6 
-  }));
+  for (const locale of locales) {
+    for (const p of publicPaths) {
+      const path = p ? `/${locale}/${p}` : `/${locale}`;
+      entries.push({
+        url: `${site}${path}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      });
+    }
+  }
 
-  // Content pages
-  const contentUrls: MetadataRoute.Sitemap = [
-    "/en/about", "/en/contact", "/en/onboarding", "/en/pricing", "/en/features",
-    "/ar/about", "/ar/contact", "/ar/onboarding", "/ar/pricing", "/ar/features",
-    "/en/doctors", "/en/hospitals", "/en/charities", "/en/insurance", "/en/partners",
-    "/ar/doctors", "/ar/hospitals", "/ar/charities", "/ar/insurance", "/ar/partners",
-  ].map((p) => ({ 
-    url: `${base}${p}`, 
-    changeFrequency: "monthly" as const, 
-    priority: 0.7 
-  }));
+  // Root English canonical (optional)
+  entries.push({
+    url: `${site}/`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  });
 
-  return [...mainUrls, ...legalUrls, ...contentUrls];
+  return entries;
 }
