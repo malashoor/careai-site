@@ -3,11 +3,19 @@ process.env.TZ = 'UTC';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Netlify
-  output: 'export',
-  trailingSlash: true,
   images: {
-    unoptimized: true
-  }
+    // Let Next serve modern formats automatically
+    formats: ['image/avif', 'image/webp'],
+    // Optional: add your domain(s) here if you load remote images later
+    // remotePatterns: [],
+  },
+  // Exclude Flutter directory from build to prevent env var conflicts
+  experimental: {
+    excludeDefaultMomentLocales: true,
+  },
+  // Temporarily commented out to allow API routes during development
+  // output: 'export',
+  // trailingSlash: true,
 };
+
 export default nextConfig;
