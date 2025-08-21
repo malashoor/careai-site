@@ -5,8 +5,8 @@ import '../globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CareAI - Solutions de Santé alimentées par l\'IA',
-  description: 'Compagnon IA pour les personnes âgées avec des rappels de médicaments, des contrôles de santé et des alertes SOS.',
+  title: 'CareAI - Solutions de Santé Alimentées par l\'IA',
+  description: 'Companion IA pour les personnes âgées avec des rappels de médicaments, des contrôles de santé et des alertes SOS.',
   alternates: {
     canonical: 'https://www.careai.app/fr',
     languages: {
@@ -30,8 +30,8 @@ export default function FrenchLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="fr" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

@@ -30,8 +30,8 @@ export default function SpanishLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="es" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

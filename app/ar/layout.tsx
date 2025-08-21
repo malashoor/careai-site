@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import '../globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://careai.app'),
-  title: 'CareAI — حلول الرعاية الصحية المدعومة بالذكاء الاصطناعي',
-  description: 'حوّل رعاية المرضى بالذكاء الاصطناعي والتحليلات التنبؤية.',
+  title: 'CareAI - حلول الرعاية الصحية المدعومة بالذكاء الاصطناعي',
+  description: 'رفيق الذكاء الاصطناعي لكبار السن مع تذكيرات الأدوية وفحوصات الصحة وتنبيهات SOS.',
   alternates: {
     canonical: 'https://www.careai.app/ar',
     languages: {
@@ -18,29 +21,17 @@ export const metadata: Metadata = {
       'hi': 'https://www.careai.app/hi',
       'pt': 'https://www.careai.app/pt'
     }
-  },
-  openGraph: {
-    title: 'CareAI — حلول الرعاية الصحية المدعومة بالذكاء الاصطناعي',
-    description: 'أدوات ذكاء اصطناعي للعائلات ومقدمي الرعاية.',
-    url: 'https://careai.app/ar',
-    images: ['/images/welcome_ai_hero.png'],
-  },
-  icons: {
-    icon: [
-      { url: '/images/favicon.png', sizes: '32x32', type: 'image/png' },
-      { url: '/images/icon.png', sizes: '192x192', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/images/adaptive-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/images/favicon.png',
-  },
+  }
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function ArabicLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="ar" dir="rtl">
-      <body className="antialiased bg-white text-gray-900">{children}</body>
-    </html>
+    <div lang="ar" dir="rtl" className={inter.className}>
+      {children}
+    </div>
   );
 }

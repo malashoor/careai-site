@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'CareAI - KI-gestützte Gesundheitslösungen',
-  description: 'KI-Begleiter für Senioren mit Medikamentenerinnerungen, Gesundheitschecks und SOS-Alarmen.',
+  description: 'KI-Begleiter für Senioren mit Medikamentenerinnerungen, Gesundheitskontrollen und SOS-Alarmen.',
   alternates: {
     canonical: 'https://www.careai.app/de',
     languages: {
@@ -30,8 +30,8 @@ export default function GermanLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="de" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

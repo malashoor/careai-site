@@ -30,8 +30,8 @@ export default function HiLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="hi" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="hi" dir="rtl" className={inter.className}>
+      {children}
+    </div>
   );
 }

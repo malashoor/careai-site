@@ -30,8 +30,8 @@ export default function KoLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="ko" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

@@ -30,8 +30,8 @@ export default function JaLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ja" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="ja" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

@@ -30,8 +30,8 @@ export default function ChineseLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="zh" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }

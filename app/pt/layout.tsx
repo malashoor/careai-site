@@ -30,8 +30,8 @@ export default function PtLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt" dir="ltr">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <div lang="pt" dir="ltr" className={inter.className}>
+      {children}
+    </div>
   );
 }
