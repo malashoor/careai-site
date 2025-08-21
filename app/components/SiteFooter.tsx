@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { useLocale } from '@/lib/hooks/useLocale';
 
 export default function SiteFooter() {
-  const locale = useLocale();
+  // Temporarily hardcode locale to fix the error
+  const locale = 'en';
   
   // Generate localized legal links
   const legalLinks = {
