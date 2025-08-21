@@ -1,5 +1,3 @@
 [build]
 command="npm run build:netlify"
 publish="out"
-environment:
-  SECRETS_SCAN_ENABLED="false"
