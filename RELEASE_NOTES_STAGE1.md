@@ -5,7 +5,7 @@
 
 ## Highlights
 - 10 locales live (en, ar, es, fr, de, zh, ja, ko, hi, pt) with hreflang + SEO.
-- Hidden pages gated: pricing, onboarding, sign-in → 404 in all locales.
+- Hidden pages gated: pricing, onboarding, sign-in → 404 (all locales).
 - Flutter app served under `/app` with proper caching + SPA fallback.
 - Security headers (CSP, XFO, etc.) + tuned caching (HTML short, assets long).
 

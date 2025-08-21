@@ -35,4 +35,9 @@ Disallow: /ko/sign-in
 Disallow: /hi/sign-in
 Disallow: /pt/sign-in
 
+# Root hidden pages
+Disallow: /pricing
+Disallow: /onboarding
+Disallow: /sign-in
+
 Sitemap: https://www.careai.app/sitemap.xml

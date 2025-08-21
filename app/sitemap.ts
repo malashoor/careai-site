@@ -1,7 +1,7 @@
 // app/sitemap.ts
 import type { MetadataRoute } from 'next';
 
-const site = 'https://www.careai.app';
+const site = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.careai.app';
 const locales = ['en','ar','es','fr','de','zh','ja','ko','hi','pt'] as const;
 const publicPaths = ['','about','partners','contact'] as const;
 
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Root English canonical (optional)
+  // English root canonical
   entries.push({
     url: `${site}/`,
     lastModified: new Date(),
