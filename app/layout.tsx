@@ -6,7 +6,7 @@ import CookieBanner from '@/components/CookieBanner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.careai.app'),
+  metadataBase: new URL('https://www.careai.app'),
   title: 'CareAI — AI‑Powered Healthcare Solutions',
   description: 'Transform patient care with intelligent automation and predictive analytics.',
   alternates: {
