@@ -1,7 +1,7 @@
 "use client";
 
-import { dictionary } from "@/lib/dictionary";
-import Container from "@/components/Container";
+import { dictionary } from "../../../../lib/dictionary";
+import Container from "../../../../components/Container";
 
 export default function IntegrationsGuidePage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
   const i = dictionary[locale];

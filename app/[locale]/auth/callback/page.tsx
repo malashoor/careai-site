@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { getSupabase } from '@/lib/supabase';
-import Container from '@/components/Container';
+import { getSupabase } from '../../../../lib/supabase';
+import Container from '../../../../components/Container';
 
 export default function AuthCallbackPage({ params }: { params: { locale: string } }) {
   const { locale } = params;

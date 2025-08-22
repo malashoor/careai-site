@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signInWithEmail, signUpWithEmail } from "@/lib/supabase";
-import { dictionary } from "@/lib/dictionary";
-import Container from "@/components/Container";
+import { signInWithEmail, signUpWithEmail } from "../../../../lib/supabase";
+import { dictionary } from "../../../../lib/dictionary";
+import Container from "../../../../components/Container";
 
 export default function LoginPage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
   const i = dictionary[locale];
