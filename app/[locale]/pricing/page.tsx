@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { dictionary } from "@/lib/dictionary";
-import { trackEvents } from "@/lib/analytics";
+import { dictionary } from "../../../lib/dictionary";
+import { trackEvents } from "../../../lib/analytics";
 
 interface PricingTier {
   name: string;

@@ -1,35 +1,22 @@
-import { supaAdmin } from './supa';
 
-export async function rateLimitOrThrow(integration_id: string, limitPerMin: number, endpoint: string) {
-  const now = new Date();
-  const start = new Date(now); start.setSeconds(0,0);
-  const end = new Date(start); end.setMinutes(start.getMinutes()+1);
+// Simple in-memory rate limiter (works per Netlify function instance). Good enough for Stage-1.
+const BUCKET = new Map<string, { count: number; ts: number }>();
+const WINDOW_MS = 60_000;
+const LIMIT = Number(process.env.RATE_LIMIT_PER_MINUTE || 30);
 
-  const { data, error } = await supaAdmin
-    .from('api_usage')
-    .select('id,count')
-    .eq('integration_id', integration_id)
-    .eq('endpoint', endpoint)
-    .gte('window_start', start.toISOString())
-    .lt('window_end', end.toISOString())
-    .maybeSingle();
-
-  if (error) throw error;
-
-  let count = 0;
-  if (!data) {
-    const ins = await supaAdmin.from('api_usage').insert({
-      integration_id, endpoint, window_start: start.toISOString(),
-      window_end: end.toISOString(), count: 1
-    }).select('count').single();
-    count = ins.data?.count ?? 1;
-  } else {
-    const upd = await supaAdmin.from('api_usage').update({ count: data.count + 1 }).eq('id', data.id).select('count').single();
-    count = upd.data?.count ?? (data.count + 1);
+export function rateLimitOrThrow(key: string) {
+  const now = Date.now();
+  const rec = BUCKET.get(key);
+  if (!rec || now - rec.ts > WINDOW_MS) {
+    BUCKET.set(key, { count: 1, ts: now });
+    return;
   }
-  if (count > limitPerMin) {
-    const e:any = new Error('Rate limit exceeded');
-    e.status = 429;
-    throw e;
-  }
+  if (rec.count >= LIMIT) throw new Error('RATE_LIMIT');
+  rec.count++;
+}
+
+export function clientKeyFromReq(req: Request) {
+  const ip = (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+  const ua = req.headers.get('user-agent') || 'ua';
+  return `${ip}:${ua}`;
 }

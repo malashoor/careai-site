@@ -75,3 +75,6 @@ FLUTTER_ENV_INTEGRATION*.md
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Local Netlify folder
+.netlify

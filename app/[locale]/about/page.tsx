@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { dictionary } from "@/lib/dictionary";
+import { dictionary } from "../../lib/dictionary";
 
 interface AboutPageProps {
   params: {

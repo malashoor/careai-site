@@ -1,11 +1,11 @@
 "use client";
 
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Pricing from "@/components/Pricing";
-import { dictionary } from "@/lib/dictionary";
-import { trackEvents } from "@/lib/analytics";
-import { locales, defaultLocale } from "@/lib/i18n";
+import Hero from "../../components/Hero";
+import Features from "../../components/Features";
+import Pricing from "../../components/Pricing";
+import { dictionary } from "../../lib/dictionary";
+import { trackEvents } from "../../lib/analytics";
+import { locales, defaultLocale } from "../../lib/i18n";
 
 export default function HomePage({ params: { locale } }: { params: { locale: "en" | "ar" | "es" | "fr" | "de" | "zh" | "ja" | "ko" | "hi" | "pt" } }) {
   // Validate locale parameter and fallback to default

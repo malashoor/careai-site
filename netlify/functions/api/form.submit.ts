@@ -1,10 +1,17 @@
+
 import type { Handler } from '@netlify/functions';
 import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
+import { corsHeaders, handleOptions, assertAllowedOrigin } from '../_lib/cors';
+import { rateLimitOrThrow, clientKeyFromReq } from '../_lib/rateLimit';
+import { logError } from '../_lib/monitor';
 
 const supa = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
 async function verifyHCaptcha(token: string, remoteip?: string) {
+  if (!process.env.HCAPTCHA_SECRET) {
+    throw Object.assign(new Error('Server misconfigured (captcha)'), { status: 500 });
+  }
   const res = await fetch('https://hcaptcha.com/siteverify', {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
@@ -22,23 +29,54 @@ async function verifyHCaptcha(token: string, remoteip?: string) {
   }
 }
 
-function cors(origin?: string) {
-  return {
-    'access-control-allow-origin': origin || '*',
-    'access-control-allow-methods': 'POST,OPTIONS',
-    'access-control-allow-headers': 'content-type'
-  } as Record<string, string>;
-}
-
 export const handler: Handler = async (event) => {
+  // Helper to get origin from event.headers
+  const req = { headers: { get: (k: string) => event.headers[k.toLowerCase()] || '' } } as any;
+
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 204,
+      headers: { ...corsHeaders(req), 'Access-Control-Max-Age': '86400' },
+      body: '',
+    };
+  }
+
+  const forbidden = assertAllowedOrigin(req);
+  if (forbidden) {
+    return {
+      statusCode: 403,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders(req) },
+      body: JSON.stringify({ error: 'Forbidden origin' }),
+    };
+  }
+
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers: { ...corsHeaders(req) },
+      body: JSON.stringify({ error: 'Method not allowed' }),
+    };
+  }
+
   try {
-    if (event.httpMethod === 'OPTIONS') return { statusCode: 204, headers: cors(event.headers.origin) };
-    if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method not allowed' };
+    // Rate limit by IP+UA
+    try {
+      rateLimitOrThrow(clientKeyFromReq(req));
+    } catch {
+      return {
+        statusCode: 429,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders(req) },
+        body: JSON.stringify({ error: 'Too many requests' }),
+      };
+    }
 
     const body = JSON.parse(event.body || '{}');
     if (!body.hcaptcha_token) {
-      const e: any = new Error('Missing hcaptcha_token');
-      e.status = 400; throw e;
+      return {
+        statusCode: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders(req) },
+        body: JSON.stringify({ error: 'Missing hcaptcha_token' }),
+      };
     }
 
     await verifyHCaptcha(body.hcaptcha_token as string, (event.headers['x-forwarded-for'] as string) || undefined);
@@ -52,7 +90,7 @@ export const handler: Handler = async (event) => {
         phone: body.phone,
         plan: body.plan,
         consent: !!body.consent,
-        source: 'onboarding'
+        source: 'onboarding',
       });
     } else if (body.kind === 'partner') {
       await supa.from('partner_leads').insert({
@@ -63,15 +101,27 @@ export const handler: Handler = async (event) => {
         phone: body.phone,
         message: body.message,
         partner_type: body.type,
-        status: 'new'
+        status: 'new',
       });
     } else {
-      const e: any = new Error('Unknown form kind');
-      e.status = 400; throw e;
+      return {
+        statusCode: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders(req) },
+        body: JSON.stringify({ error: 'Unknown form kind' }),
+      };
     }
 
-    return { statusCode: 200, headers: cors(event.headers.origin), body: JSON.stringify({ ok: true }) };
+    return {
+      statusCode: 200,
+      headers: { ...corsHeaders(req) },
+      body: JSON.stringify({ ok: true }),
+    };
   } catch (e: any) {
-    return { statusCode: e.status || 500, headers: cors(event.headers.origin), body: JSON.stringify({ error: e.message || 'error' }) };
+    await logError(e, { fn: 'form.submit', event });
+    return {
+      statusCode: e.status || 500,
+      headers: { 'Content-Type': 'application/json', ...corsHeaders(req) },
+      body: JSON.stringify({ error: e.message || 'error' }),
+    };
   }
 };

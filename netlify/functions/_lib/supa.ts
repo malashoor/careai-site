@@ -1,3 +1,8 @@
+
+import 'server-only';
+if (typeof window !== 'undefined') {
+  throw new Error('Illegal import: Supabase admin client must not run on the client.');
+}
 import { createClient } from '@supabase/supabase-js';
 
 export const supaAdmin = createClient(

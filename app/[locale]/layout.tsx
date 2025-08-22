@@ -1,9 +1,9 @@
-import { locales, type Locale, isRTL, defaultLocale } from "@/lib/i18n";
+import { locales, type Locale, isRTL, defaultLocale } from "../../lib/i18n";
 import { ReactNode } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { dictionary } from "@/lib/dictionary";
-import PageViewTracker from "@/components/PageViewTracker";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import { dictionary } from "../../lib/dictionary";
+import PageViewTracker from "../../components/PageViewTracker";
 
 export const dynamic = "force-static";
 

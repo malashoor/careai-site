@@ -1,7 +1,7 @@
 "use client";
 
-import { dictionary } from "@/lib/dictionary";
-import { trackEvents } from "@/lib/analytics";
+import { dictionary } from "../../../lib/dictionary";
+import { trackEvents } from "../../../lib/analytics";
 
 export default function PartnersPage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
   const i = dictionary[locale];

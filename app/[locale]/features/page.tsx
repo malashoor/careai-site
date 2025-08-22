@@ -1,7 +1,7 @@
 "use client";
 
-import { dictionary } from "@/lib/dictionary";
-import { type Locale } from "@/lib/i18n";
+import { dictionary } from "../../lib/dictionary";
+import { type Locale } from "../../lib/i18n";
 
 interface FeaturesPageProps {
   params: {
