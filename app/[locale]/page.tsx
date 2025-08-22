@@ -7,7 +7,7 @@ import { dictionary } from "@/lib/dictionary";
 import { trackEvents } from "@/lib/analytics";
 import { locales, defaultLocale } from "@/lib/i18n";
 
-export default function HomePage({ params: { locale } }: { params: { locale: "en" | "ar" } }) {
+export default function HomePage({ params: { locale } }: { params: { locale: "en" | "ar" | "es" | "fr" | "de" | "zh" | "ja" | "ko" | "hi" | "pt" } }) {
   // Validate locale parameter and fallback to default
   const validLocale = locale && locales.includes(locale as any) ? locale : defaultLocale;
   const i = dictionary[validLocale];

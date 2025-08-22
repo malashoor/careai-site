@@ -19,7 +19,7 @@ export default function PrivacyPage() {
             <div className="text-ink-600 mb-8">
               <p><strong>Last updated:</strong> August 19, 2025</p>
               <p>
-                This Privacy Policy explains how CareAI ("CareAI," "we," "us," or "our") collects, uses, and shares information when you use our websites, applications, and related services (collectively, the "Services").
+                This Privacy Policy explains how CareAI (&ldquo;CareAI,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and shares information when you use our websites, applications, and related services (collectively, the &ldquo;Services&rdquo;).
               </p>
             </div>
 
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">2. Scope</h2>
             <p>
-              This policy applies to the Services and to individuals who use them (patients, caregivers, family members, and clinicians). If you use CareAI through a healthcare provider, we may process data as a <strong>processor</strong> on the provider's behalf subject to a Business Associate Agreement (BAA) or Data Processing Agreement (DPA).
+              This policy applies to the Services and to individuals who use them (patients, caregivers, family members, and clinicians). If you use CareAI through a healthcare provider, we may process data as a <strong>processor</strong> on the provider&apos;s behalf subject to a Business Associate Agreement (BAA) or Data Processing Agreement (DPA).
             </p>
 
             <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">3. Information we collect</h2>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
             </p>
             <div className="bg-ink-50 border-l-4 border-brand-blue p-6 mb-8">
               <p className="text-ink-700 italic">
-                Note: The prior "Privacy Shield" framework has been replaced; we rely on SCCs and/or DPF where applicable.
+                Note: The prior &ldquo;Privacy Shield&rdquo; framework has been replaced; we rely on SCCs and/or DPF where applicable.
               </p>
             </div>
 
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
             </ul>
             <p>Request via <strong>privacy@careai.com</strong> or in‑app settings. We will verify your request and respond within required timeframes.</p>
 
-            <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">10. Children's privacy</h2>
+            <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">10. Children&apos;s privacy</h2>
             <p>
               CareAI is not directed to children under 13 and does not knowingly collect their data without verifiable parental consent. If you believe a child provided data, contact us and we will take appropriate action.
             </p>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">15. Changes to this policy</h2>
             <p>
-              We will post updates here and update the "Last updated" date. If changes materially affect your rights, we will provide additional notice and seek consent where required.
+              We will post updates here and update the &ldquo;Last updated&rdquo; date. If changes materially affect your rights, we will provide additional notice and seek consent where required.
             </p>
 
             <h2 className="text-2xl font-bold text-ink-900 mt-12 mb-4">16. Contact</h2>

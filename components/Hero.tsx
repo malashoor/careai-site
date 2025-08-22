@@ -6,7 +6,7 @@ import SmartLink from "@/components/Ui/SmartLink";
 import { getGetStartedHref, getLearnMoreHref, isAppStoreLink, isDeepLink } from "@/lib/cta";
 
 interface HeroProps {
-  locale: "en" | "ar";
+  locale: "en" | "ar" | "es" | "fr" | "de" | "zh" | "ja" | "ko" | "hi" | "pt";
 }
 
 export default function Hero({ locale }: HeroProps) {

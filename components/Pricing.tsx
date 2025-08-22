@@ -18,7 +18,7 @@ interface PricingTier {
   trialEligible?: boolean;
 }
 
-export default function Pricing({ locale = 'en' as 'en' | 'ar' }) {
+export default function Pricing({ locale = 'en' as 'en' | 'ar' | 'es' | 'fr' | 'de' | 'zh' | 'ja' | 'ko' | 'hi' | 'pt' }) {
   const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'annual'>('monthly');
   const i = dictionary[locale];
 

@@ -38,8 +38,8 @@ export default function AboutPage() {
                 Strategic Partnerships
               </h2>
               <p className="text-slate-600 leading-relaxed mb-4">
-                We're looking for partners for pilot programs: doctors, care homes, insurance companies, and health systems. 
-                If you're interested in developing features or measuring outcomes with us, we'd love to connect.
+                We&apos;re looking for partners for pilot programs: doctors, care homes, insurance companies, and health systems. 
+                If you&apos;re interested in developing features or measuring outcomes with us, we&apos;d love to connect.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="/partners" className="px-5 py-2 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-colors">

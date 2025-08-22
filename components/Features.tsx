@@ -8,7 +8,7 @@ import Link from "next/link";
 import { getGetStartedHref, isAppStoreLink, isDeepLink } from "@/lib/cta";
 
 interface FeaturesProps {
-  locale: "en" | "ar";
+  locale: "en" | "ar" | "es" | "fr" | "de" | "zh" | "ja" | "ko" | "hi" | "pt";
 }
 
 export default function Features({ locale }: FeaturesProps) {

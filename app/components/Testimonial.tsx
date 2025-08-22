@@ -1,5 +1,5 @@
 export default function Testimonial({ locale = 'en' as 'en' | 'ar' | 'es' | 'fr' | 'de' | 'zh' | 'ja' | 'ko' | 'hi' | 'pt' }) {
-  const t = {
+  const testimonialData = {
     en: {
       quote: "CareAI helped our family coordinate daily care without the chaos. Tasks, reminders, and health insights in one place.",
       author: "— A caregiver family"
@@ -40,14 +40,16 @@ export default function Testimonial({ locale = 'en' as 'en' | 'ar' | 'es' | 'fr'
       quote: "CareAI ajudou nossa família a coordenar o cuidado diário sem caos. Tarefas, lembretes e informações de saúde em um só lugar.",
       author: "— Uma família cuidadora"
     }
-  }[locale] || t.en;
+  };
+  
+  const t = testimonialData[locale] || testimonialData.en;
 
   return (
     <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-br from-blue-50 to-indigo-50 p-8 md:p-12 ring-1 ring-black/5">
           <blockquote className="text-xl md:text-2xl leading-relaxed">
-            "{t.quote}"
+            &ldquo;{t.quote}&rdquo;
           </blockquote>
           <div className="mt-6 text-sm text-gray-600">
             {t.author}

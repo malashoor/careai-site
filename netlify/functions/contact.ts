@@ -1,146 +1,111 @@
-import type { Handler } from "@netlify/functions";
-import { createClient } from "@supabase/supabase-js";
+import { Handler } from '@netlify/functions'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+
+const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
 export const handler: Handler = async (event) => {
   // Handle CORS
-  if (event.httpMethod === "OPTIONS") {
+  if (event.httpMethod === 'OPTIONS') {
     return {
-      statusCode: 204,
+      statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
       },
-    };
+    }
   }
 
-  if (event.httpMethod !== "POST") {
+  if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: "Method Not Allowed",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
+      body: JSON.stringify({ error: 'Method not allowed' }),
+    }
   }
 
   try {
-    const data = JSON.parse(event.body || "{}");
+    const body = JSON.parse(event.body || '{}')
+    const { fullName, email, subject, message, locale = 'en', path = '/' } = body
 
-    const full_name = String(data.fullName || data.full_name || data.name || "").trim();
-    const email = String(data.email || "").trim().toLowerCase();
-    const subject = String(data.subject || "");
-    const message = String(data.message || "").trim();
-    const locale = String(data.locale || "en");
-    const path = String(data.path || "/");
-    const user_agent = String(event.headers["user-agent"] || "");
-
-    if (!full_name || !email || !message) {
+    // Basic validation
+    if (!fullName || !email || !message) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ ok: false, error: "Missing required fields." }),
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
         },
-      };
+        body: JSON.stringify({ 
+          error: 'Missing required fields: fullName, email, message' 
+        }),
+      }
     }
 
-    // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ ok: false, error: "Invalid email." }),
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-        },
-      };
-    }
-
-    // Create Supabase client
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
-      { auth: { autoRefreshToken: false, persistSession: false } }
-    );
-
-    // Insert into contact_messages table
-    const { data: row, error } = await supabase
-      .from("contact_messages")
-      .insert({
-        full_name,
-        email,
-        subject,
-        message,
-        locale,
-        path,
-        user_agent,
-      })
-      .select("id")
-      .single();
+    // Insert into Supabase
+    const { data, error } = await supabase
+      .from('contact_messages')
+      .insert([
+        {
+          full_name: fullName,
+          email,
+          subject: subject || 'Contact Form Submission',
+          message,
+          locale,
+          path,
+          user_agent: event.headers['user-agent'] || '',
+          status: 'new'
+        }
+      ])
+      .select()
+      .single()
 
     if (error) {
-      console.error("Supabase error:", error);
-      throw error;
-    }
-
-    // Optional: Send email notification (if Resend is configured)
-    if (process.env.RESEND_API_KEY && process.env.CONTACT_TO_EMAIL) {
-      try {
-        const { Resend } = await import("resend");
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        const from = process.env.CONTACT_FROM_EMAIL || "no-reply@careai.app";
-        
-        await resend.emails.send({
-          from,
-          to: process.env.CONTACT_TO_EMAIL,
-          subject: `New contact message: ${subject || "General Inquiry"}`,
-          reply_to: email,
-          text: `From: ${full_name} <${email}>\nLocale: ${locale}\nPath: ${path}\nUA: ${user_agent}\n\n${message}\n\nMessage ID: ${row.id}`,
-        });
-      } catch (emailError) {
-        // Don't break if email fails
-        console.warn("Failed to send contact email:", emailError);
+      console.error('Supabase error:', error)
+      return {
+        statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          error: 'Failed to save message',
+          details: error.message 
+        }),
       }
     }
 
-    // Optional: Send Slack notification
-    if (process.env.SLACK_WEBHOOK_URL) {
-      try {
-        await fetch(process.env.SLACK_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({
-            text: `New contact from ${full_name} <${email}>: ${subject}\n${message}`,
-          }),
-        });
-      } catch (slackError) {
-        console.warn("Failed to send Slack notification:", slackError);
-      }
-    }
+    // Generate ticket ID
+    const ticketId = `CM-${data.id.slice(0, 8).toUpperCase()}`
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ ok: true, id: row.id }),
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
       },
-    };
-  } catch (error: any) {
-    console.error("Contact function error:", error);
-    
+      body: JSON.stringify({
+        success: true,
+        message: 'Message sent successfully',
+        ticketId,
+        id: data.id
+      }),
+    }
+
+  } catch (error) {
+    console.error('Function error:', error)
     return {
       statusCode: 500,
-      body: JSON.stringify({ 
-        ok: false, 
-        error: error.message || "Server error" 
-      }),
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
       },
-    };
+      body: JSON.stringify({ 
+        error: 'Internal server error',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      }),
+    }
   }
-};
+}

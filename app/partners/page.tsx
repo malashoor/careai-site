@@ -57,12 +57,12 @@ export default function PartnersPage() {
               {partners.map((partner, index) => (
                 <div key={index} className="bg-white rounded-2xl p-6 shadow-lg ring-1 ring-black/5 hover:shadow-xl transition-shadow">
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-48 h-48 mb-4 flex items-center justify-center">
+                    <div className="w-64 h-64 mb-4 flex items-center justify-center">
                       <Image
                         src={partner.image}
                         alt={partner.name}
-                        width={192}
-                        height={192}
+                        width={256}
+                        height={256}
                         className="w-full h-full object-contain"
                       />
                     </div>
@@ -85,7 +85,7 @@ export default function PartnersPage() {
                 Partner With Us
               </h2>
               <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-                We're actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you're interested in co-designing features or evaluating outcomes, we'd love to talk.
+                We&apos;re actively seeking pilot partners: clinicians, senior living communities, payers, and health systems. If you&apos;re interested in co-designing features or evaluating outcomes, we&apos;d love to talk.
               </p>
               <div className="flex justify-center">
                 <a
